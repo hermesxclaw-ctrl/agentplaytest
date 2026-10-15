@@ -1,0 +1,27 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+body { font-family: system-ui, sans-serif; margin: 1rem; color: #1a1a2e; line-height: 1.45; }
+table { border-collapse: collapse; font-size: .85rem; }
+td, th { border: 1px solid #ccc; padding: 2px 6px; text-align: left; }
+code { background: #eef; padding: 0 .2em; border-radius: 3px; }
+</style></head><body><h1>AgentPlaytest report — Snack Stand (model-friendly interface)</h1>
+<p><strong>Playtester:</strong> SELF-TEST (scripted player — NOT model evidence)  </p>
+<p><strong>Score:</strong> 100.0/100 (grade A)  </p>
+<p><strong>Verdict:</strong> Model-playable: the agent reached the goal unaided.  </p>
+<p><strong>Steps:</strong> 9 of 40 max  </p>
+<p><strong>Milestones:</strong> 4/4 — first_sale, profit_10, profit_25, goal_reached</p>
+<h2>Where it got stuck (plain English)</h2>
+<p>&bull; Most-used actions: <code>open_the_stand</code> x4, <code>end_the_day</code> x3.</p>
+<p>&bull; The agent reached the goal in 9 steps with 0 invalid replies.</p>
+<h2>Transcript</h2>
+<table>
+<tr><td>Step</td><td>Action</td><td>Result</td></tr>
+<tr><td>1</td><td><code>buy_10_snacks</code></td><td>Bought 10 snacks for $20. Stock is now 10.</td></tr>
+<tr><td>2</td><td><code>open_the_stand</code></td><td>Sold 6 snacks for $30.</td></tr>
+<tr><td>3</td><td><code>end_the_day</code></td><td>Day 2 begins.</td></tr>
+<tr><td>4</td><td><code>open_the_stand</code></td><td>6 customers came but you only had stock for 4 of them. Sold 4 snacks for $20.</td></tr>
+<tr><td>5</td><td><code>buy_10_snacks</code></td><td>Bought 10 snacks for $20. Stock is now 10.</td></tr>
+<tr><td>6</td><td><code>end_the_day</code></td><td>Day 3 begins.</td></tr>
+<tr><td>7</td><td><code>open_the_stand</code></td><td>Sold 6 snacks for $30.</td></tr>
+<tr><td>8</td><td><code>end_the_day</code></td><td>Day 4 begins.</td></tr>
+<tr><td>9</td><td><code>open_the_stand</code></td><td>6 customers came but you only had stock for 4 of them. Sold 4 snacks for $20.</td></tr>
+</table></body></html>

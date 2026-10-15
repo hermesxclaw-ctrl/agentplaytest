@@ -1,0 +1,35 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+body { font-family: system-ui, sans-serif; margin: 1rem; color: #1a1a2e; line-height: 1.45; }
+table { border-collapse: collapse; font-size: .85rem; }
+td, th { border: 1px solid #ccc; padding: 2px 6px; text-align: left; }
+code { background: #eef; padding: 0 .2em; border-radius: 3px; }
+</style></head><body><h1>AgentPlaytest report — Snack Stand (model-friendly interface)</h1>
+<p><strong>Playtester:</strong> Model: gemma-3-4b-it via llamacpp  </p>
+<p><strong>Score:</strong> 35.0/100 (grade D)  </p>
+<p><strong>Verdict:</strong> Not model-playable: the agent could not make meaningful progress unaided.  </p>
+<p><strong>Steps:</strong> 14 of 60 max  </p>
+<p><strong>Milestones:</strong> 2/4 — first_sale, profit_10</p>
+<h2>Where it got stuck (plain English)</h2>
+<p>&bull; Most-used actions: <code>set_price_medium_5_dollars</code> x8, <code>open_the_stand</code> x3.</p>
+<p>&bull; The model produced 1 reply with no usable action — nothing in the reply mapped to a listed action, so the step was wasted.</p>
+<p>&bull; It fell into 1 repeat loop(s): the same action three times in a row with the state not changing at all — the classic sign the app returned feedback the agent could not interpret.</p>
+<p>&bull; Longest no-progress stretch: 11 steps, starting at step 3. During a stall the agent is spending tokens without moving any milestone — in a paid agent product this is literally burning money.</p>
+<p>&bull; It got 30% of the way to the goal (in cash terms) before the run ended.</p>
+<h2>Transcript</h2>
+<table>
+<tr><td>Step</td><td>Action</td><td>Result</td></tr>
+<tr><td>1</td><td><code>buy_5_snacks</code></td><td>Bought 5 snacks for $10. Stock is now 5.</td></tr>
+<tr><td>2</td><td><code>open_the_stand</code></td><td>6 customers came but you only had stock for 5 of them. Sold 5 snacks for $25.</td></tr>
+<tr><td>3</td><td><code>set_price_medium_5_dollars</code></td><td>Price set to $5 per snack.</td></tr>
+<tr><td>4</td><td><code>set_price_medium_5_dollars</code></td><td>Price set to $5 per snack.</td></tr>
+<tr><td>5</td><td><code>open_the_stand</code></td><td>The stand was already open today; customers have gone home.</td></tr>
+<tr><td>6</td><td><code>set_price_medium_5_dollars</code></td><td>Price set to $5 per snack.</td></tr>
+<tr><td>7</td><td><code>set_price_medium_5_dollars</code></td><td>Price set to $5 per snack.</td></tr>
+<tr><td>8</td><td><code>buy_5_snacks</code></td><td>Bought 5 snacks for $10. Stock is now 5.</td></tr>
+<tr><td>9</td><td><code>set_price_medium_5_dollars</code></td><td>Price set to $5 per snack.</td></tr>
+<tr><td>10</td><td><code>set_price_medium_5_dollars</code></td><td>Price set to $5 per snack.</td></tr>
+<tr><td>11</td><td><code>set_price_medium_5_dollars</code> [LOOP]</td><td>Price set to $5 per snack.</td></tr>
+<tr><td>12</td><td><code>open_the_stand</code></td><td>The stand was already open today; customers have gone home.</td></tr>
+<tr><td>13</td><td><code>set_price_medium_5_dollars</code></td><td>Price set to $5 per snack.</td></tr>
+<tr><td>14</td><td>—</td><td>ERROR: backend error: timed out</td></tr>
+</table></body></html>

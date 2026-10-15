@@ -35,13 +35,27 @@ interfaces over the *identical* simulation:
 Same checker, same model, same rules. Any score difference is caused by
 the interface alone. Captured reports live in `runs/`.
 
-**Which model?** The headline captures use **Gemma 3 4B** (Q3_K_M GGUF,
-llama.cpp, fully local). The repo also archives runs with **Gemma 3 1B** —
-which scored 0 on *both* interfaces, fixating on its first action for 60
-straight steps no matter how clear the interface was. That turned out to
-be one of the project's real findings: below a capability floor, the
-playtester itself is the bottleneck and interface quality can't even
-register. AgentPlaytest measures model × interface together, and says so.
+**Which model?** Captured results (all fully local, llama.cpp):
+
+| Playtester | Friendly interface | Hostile interface |
+|---|---|---|
+| Gemma 3 4B (Q3) | **35.0 (D)** — real play: bought, sold, 2/4 milestones, then fixated on re-setting its price and never ended a day | not captured* |
+| Gemma 3 1B (Q4) | **0.0 (F)** — repeated its first action for 60 straight steps | **0.0 (F)** — picked `op_a` (end day) 7 times and skipped the entire week without learning anything |
+
+\* The 4B's generation slowed to a crawl on the shared 2-core build box
+(one reply took ~5 minutes), so its hostile run was not captured; re-run
+`run-demo.sh` on a quieter machine to complete the grid. The 4B friendly
+run itself ended at step 14 when a client timeout hit a slow generation —
+the transcript in `runs/` shows exactly where and says so.
+
+The 1B row is the controlled comparison — same model, same harness, only
+the interface differs — and the 4B row shows what changes when the
+playtester gets more capable: the friendly interface starts producing
+real, scoreable play. That became one of the project's genuine findings:
+a playability score measures model × interface together, and below a
+capability floor the model is the bottleneck no matter how good the
+interface is. AgentPlaytest says so in its own reports instead of hiding
+it — which is rather the point of a testing tool.
 
 ## Running it
 
@@ -58,11 +72,11 @@ python3 playtest.py --target friendly --backend llamacpp
 python3 playtest.py --target hostile  --backend llamacpp
 ```
 
-The captured headline runs used the bigger sibling on the same stack —
-Gemma 3 4B-it Q3_K_M (`gemma-3-4b-it-Q3_K_M.gguf`, unsloth's GGUF
-conversion of Google's weights), served with `-c 2048`. Swap the `-m`
-path and pass `--model gemma-3-4b-it` to reproduce them exactly
-(`run-demo.sh` does both runs back to back).
+The captured runs used two Gemma sizes on the same stack: Gemma 3 1B-it
+Q4_K_M (ggml-org) and Gemma 3 4B-it Q3_K_M (`gemma-3-4b-it-Q3_K_M.gguf`,
+unsloth's GGUF conversion of Google's weights), served with `-c 2048`.
+Swap the `-m` path and pass `--model <name>` to reproduce them
+(`run-demo.sh` runs a 20-step pair back to back).
 
 **Ollama (one-command option on a normal laptop)**
 
