@@ -1,0 +1,94 @@
+{
+  "target": "Snack Stand (model-friendly interface)",
+  "backend": "scripted",
+  "model": "scripted-rules",
+  "self_test": true,
+  "steps_taken": 9,
+  "max_steps": 40,
+  "milestones_hit": [
+    "first_sale",
+    "profit_10",
+    "profit_25",
+    "goal_reached"
+  ],
+  "milestones_all": [
+    "first_sale",
+    "profit_10",
+    "profit_25",
+    "goal_reached"
+  ],
+  "progress": 1.0,
+  "invalid_replies": 0,
+  "loop_events": 0,
+  "longest_stall_steps": 2,
+  "first_stall_step": 5,
+  "score": 100.0,
+  "grade": "A",
+  "goal_reached": true,
+  "verdict": "Model-playable: the agent reached the goal unaided.",
+  "steps": [
+    {
+      "step": 1,
+      "model_reply": "{\"action\": \"buy_10_snacks\", \"why\": \"scripted rule\"}",
+      "action": "buy_10_snacks",
+      "note": "scripted rule",
+      "result": "Bought 10 snacks for $20. Stock is now 10."
+    },
+    {
+      "step": 2,
+      "model_reply": "{\"action\": \"open_the_stand\", \"why\": \"scripted rule\"}",
+      "action": "open_the_stand",
+      "note": "scripted rule",
+      "result": "Sold 6 snacks for $30."
+    },
+    {
+      "step": 3,
+      "model_reply": "{\"action\": \"end_the_day\", \"why\": \"scripted rule\"}",
+      "action": "end_the_day",
+      "note": "scripted rule",
+      "result": "Day 2 begins."
+    },
+    {
+      "step": 4,
+      "model_reply": "{\"action\": \"open_the_stand\", \"why\": \"scripted rule\"}",
+      "action": "open_the_stand",
+      "note": "scripted rule",
+      "result": "6 customers came but you only had stock for 4 of them. Sold 4 snacks for $20."
+    },
+    {
+      "step": 5,
+      "model_reply": "{\"action\": \"buy_10_snacks\", \"why\": \"scripted rule\"}",
+      "action": "buy_10_snacks",
+      "note": "scripted rule",
+      "result": "Bought 10 snacks for $20. Stock is now 10."
+    },
+    {
+      "step": 6,
+      "model_reply": "{\"action\": \"end_the_day\", \"why\": \"scripted rule\"}",
+      "action": "end_the_day",
+      "note": "scripted rule",
+      "result": "Day 3 begins."
+    },
+    {
+      "step": 7,
+      "model_reply": "{\"action\": \"open_the_stand\", \"why\": \"scripted rule\"}",
+      "action": "open_the_stand",
+      "note": "scripted rule",
+      "result": "Sold 6 snacks for $30."
+    },
+    {
+      "step": 8,
+      "model_reply": "{\"action\": \"end_the_day\", \"why\": \"scripted rule\"}",
+      "action": "end_the_day",
+      "note": "scripted rule",
+      "result": "Day 4 begins."
+    },
+    {
+      "step": 9,
+      "model_reply": "{\"action\": \"open_the_stand\", \"why\": \"scripted rule\"}",
+      "action": "open_the_stand",
+      "note": "scripted rule",
+      "result": "6 customers came but you only had stock for 4 of them. Sold 4 snacks for $20."
+    }
+  ]
+}

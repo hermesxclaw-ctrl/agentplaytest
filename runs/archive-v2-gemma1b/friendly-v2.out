@@ -1,0 +1,64 @@
+[agentplaytest] target=Snack Stand (model-friendly interface) backend=llamacpp model=gemma-3-1b-it
+  step  1: buy_5_snacks -> Bought 5 snacks for $10. Stock is now 5.
+  step  2: buy_5_snacks -> Bought 5 snacks for $10. Stock is now 10.
+  step  3: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step  4: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step  5: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step  6: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step  7: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step  8: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step  9: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 10: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 11: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 12: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 13: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 14: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 15: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 16: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 17: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 18: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 19: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 20: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 21: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 22: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 23: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 24: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 25: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 26: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 27: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 28: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 29: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 30: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 31: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 32: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 33: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 34: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 35: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 36: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 37: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 38: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 39: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 40: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 41: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 42: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 43: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 44: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 45: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 46: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 47: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 48: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 49: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 50: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 51: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 52: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 53: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 54: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 55: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 56: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 57: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 58: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 59: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+  step 60: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
+[agentplaytest] score=0.0 grade=F — Not model-playable: the agent could not make meaningful progress unaided.
+[agentplaytest] report: /home/hatch/workspace/hacktoberfest-side-hustle-2026/agentplaytest/runs/report-friendly.md
+[agentplaytest] transcript: /home/hatch/workspace/hacktoberfest-side-hustle-2026/agentplaytest/runs/run-friendly.json

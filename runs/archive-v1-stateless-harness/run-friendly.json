@@ -1,0 +1,447 @@
+{
+  "target": "Snack Stand (model-friendly interface)",
+  "backend": "llamacpp",
+  "model": "gemma-3-1b-it",
+  "self_test": false,
+  "steps_taken": 60,
+  "max_steps": 60,
+  "milestones_hit": [],
+  "milestones_all": [
+    "first_sale",
+    "profit_10",
+    "profit_25",
+    "goal_reached"
+  ],
+  "progress": 0.0,
+  "invalid_replies": 0,
+  "loop_events": 1,
+  "longest_stall_steps": 60,
+  "first_stall_step": 1,
+  "score": 0.0,
+  "grade": "F",
+  "goal_reached": false,
+  "verdict": "Not model-playable: the agent could not make meaningful progress unaided.",
+  "steps": [
+    {
+      "step": 1,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Bought 5 snacks for $10. Stock is now 5."
+    },
+    {
+      "step": 2,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Bought 5 snacks for $10. Stock is now 10."
+    },
+    {
+      "step": 3,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 4,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 5,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0).",
+      "loop": true
+    },
+    {
+      "step": 6,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 7,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 8,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 9,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 10,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 11,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 12,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 13,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 14,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 15,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 16,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 17,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 18,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 19,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 20,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 21,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 22,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 23,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 24,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 25,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 26,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 27,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 28,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 29,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 30,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 31,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 32,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 33,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 34,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 35,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 36,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 37,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 38,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 39,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 40,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 41,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 42,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 43,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 44,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 45,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 46,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 47,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 48,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 49,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 50,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 51,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 52,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 53,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 54,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 55,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 56,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 57,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 58,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 59,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    },
+    {
+      "step": 60,
+      "model_reply": "{\"action\": \"buy_5_snacks\"}",
+      "action": "buy_5_snacks",
+      "note": "",
+      "result": "Not enough cash to buy 5 snacks (costs $10, you have $0)."
+    }
+  ]
+}

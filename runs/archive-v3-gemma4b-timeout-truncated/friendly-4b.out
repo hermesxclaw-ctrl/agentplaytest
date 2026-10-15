@@ -1,0 +1,17 @@
+[agentplaytest] target=Snack Stand (model-friendly interface) backend=llamacpp model=gemma-3-4b-it
+  step  1: buy_5_snacks -> Bought 5 snacks for $10. Stock is now 5.
+  step  2: open_the_stand -> 6 customers came but you only had stock for 5 of them. Sold 5 snacks f
+  step  3: set_price_medium_5_dollars -> Price set to $5 per snack.
+  step  4: set_price_medium_5_dollars -> Price set to $5 per snack.
+  step  5: open_the_stand -> The stand was already open today; customers have gone home.
+  step  6: set_price_medium_5_dollars -> Price set to $5 per snack.
+  step  7: set_price_medium_5_dollars -> Price set to $5 per snack.
+  step  8: buy_5_snacks -> Bought 5 snacks for $10. Stock is now 5.
+  step  9: set_price_medium_5_dollars -> Price set to $5 per snack.
+  step 10: set_price_medium_5_dollars -> Price set to $5 per snack.
+  step 11: set_price_medium_5_dollars -> Price set to $5 per snack.
+  step 12: open_the_stand -> The stand was already open today; customers have gone home.
+  step 13: set_price_medium_5_dollars -> Price set to $5 per snack.
+[agentplaytest] score=35.0 grade=D — Not model-playable: the agent could not make meaningful progress unaided.
+[agentplaytest] report: /home/hatch/workspace/hacktoberfest-side-hustle-2026/agentplaytest/runs/report-friendly.md
+[agentplaytest] transcript: /home/hatch/workspace/hacktoberfest-side-hustle-2026/agentplaytest/runs/run-friendly.json

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgentPlaytest — Demo: same game, two interfaces</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 2rem auto; max-width: 1100px; padding: 0 1rem; color: #1a1a2e; background: #f7f7fb; }
+  h1 { margin-bottom: .2rem; }
+  .sub { color: #555; margin-top: 0; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }
+  .card { background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 1rem 1.2rem; }
+  .card h2 { margin-top: 0; font-size: 1.1rem; }
+  .score { font-size: 2rem; font-weight: 700; }
+  .good { color: #137333; } .bad { color: #b3261e; }
+  iframe { width: 100%; height: 520px; border: 0; border-top: 1px solid #eee; }
+  code { background: #eef; padding: 0 .25em; border-radius: 4px; }
+</style>
+</head>
+<body>
+<h1>AgentPlaytest — demo</h1>
+<p class="sub">One tiny game (Snack Stand). One checker. One local open-weight model (Gemma).
+Two interfaces. The only variable is how well the app explains itself.</p>
+
+<div class="grid">
+  <div class="card">
+    <h2>✅ Model-friendly interface</h2>
+    <p class="score good" id="score-friendly">—</p>
+    <p>Plain state names, the goal stated up front, every action explained.</p>
+    <iframe src="../runs/report-friendly.html" title="Friendly run report"></iframe>
+  </div>
+  <div class="card">
+    <h2>🚧 Model-hostile interface</h2>
+    <p class="score bad" id="score-hostile">—</p>
+    <p>Coded keys (<code>d, c, s, p</code>), actions named <code>op_a</code>…<code>op_h</code>,
+    result codes instead of sentences, and the goal never mentioned.</p>
+    <iframe src="../runs/report-hostile.html" title="Hostile run report"></iframe>
+  </div>
+</div>
+
+<p>Full transcripts: <code>runs/run-friendly.json</code> and <code>runs/run-hostile.json</code>.
+Reproduce locally with the commands in the project README.</p>
+
+<script>
+  // Pull the score line out of each rendered report if available.
+  async function fill(id, url) {
+    try {
+      const t = await (await fetch(url)).text();
+      const m = t.match(/Score:<\/strong>\s*([\d.]+)\/100 \(grade (\w)\)/);
+      if (m) document.getElementById(id).textContent = m[1] + " / 100 (grade " + m[2] + ")";
+    } catch (e) { /* file:// or missing export — leave the dash */ }
+  }
+  fill("score-friendly", "../runs/report-friendly.html");
+  fill("score-hostile", "../runs/report-hostile.html");
+</script>
+</body>
+</html>
