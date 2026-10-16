@@ -20,18 +20,20 @@
 </head>
 <body>
 <h1>AgentPlaytest — demo</h1>
-<p class="sub">One tiny game (Snack Stand). One checker. One local open-weight model (Gemma).
-Two interfaces. The only variable is how well the app explains itself.</p>
+<p class="sub">One tiny game (Snack Stand). One checker. Local open-weight Gemma models, run 100% locally.
+Two interfaces. Note the two captured reports below use different model sizes — the friendly
+report is Gemma 3 4B, the hostile report is Gemma 3 1B (the 4B hostile run was not captured;
+see the project README for the full results grid, including that gap).</p>
 
 <div class="grid">
   <div class="card">
-    <h2>✅ Model-friendly interface</h2>
+    <h2>✅ Model-friendly interface — Gemma 3 4B</h2>
     <p class="score good" id="score-friendly">—</p>
     <p>Plain state names, the goal stated up front, every action explained.</p>
     <iframe src="../runs/report-friendly.html" title="Friendly run report"></iframe>
   </div>
   <div class="card">
-    <h2>🚧 Model-hostile interface</h2>
+    <h2>🚧 Model-hostile interface — Gemma 3 1B</h2>
     <p class="score bad" id="score-hostile">—</p>
     <p>Coded keys (<code>d, c, s, p</code>), actions named <code>op_a</code>…<code>op_h</code>,
     result codes instead of sentences, and the goal never mentioned.</p>
