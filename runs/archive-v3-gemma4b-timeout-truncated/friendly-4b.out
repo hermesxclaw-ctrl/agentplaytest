@@ -13,5 +13,5 @@
   step 12: open_the_stand -> The stand was already open today; customers have gone home.
   step 13: set_price_medium_5_dollars -> Price set to $5 per snack.
 [agentplaytest] score=35.0 grade=D — Not model-playable: the agent could not make meaningful progress unaided.
-[agentplaytest] report: /home/hatch/workspace/hacktoberfest-side-hustle-2026/agentplaytest/runs/report-friendly.md
-[agentplaytest] transcript: /home/hatch/workspace/hacktoberfest-side-hustle-2026/agentplaytest/runs/run-friendly.json
+[agentplaytest] report: ./runs/report-friendly.md
+[agentplaytest] transcript: ./runs/run-friendly.json

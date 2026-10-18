@@ -60,5 +60,5 @@
   step 59: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
   step 60: buy_5_snacks -> Not enough cash to buy 5 snacks (costs $10, you have $0).
 [agentplaytest] score=0.0 grade=F — Not model-playable: the agent could not make meaningful progress unaided.
-[agentplaytest] report: /home/hatch/workspace/hacktoberfest-side-hustle-2026/agentplaytest/runs/report-friendly.md
-[agentplaytest] transcript: /home/hatch/workspace/hacktoberfest-side-hustle-2026/agentplaytest/runs/run-friendly.json
+[agentplaytest] report: ./runs/report-friendly.md
+[agentplaytest] transcript: ./runs/run-friendly.json
