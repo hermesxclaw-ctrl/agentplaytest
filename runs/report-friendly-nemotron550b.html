@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+body { font-family: system-ui, sans-serif; margin: 1rem; color: #1a1a2e; line-height: 1.45; }
+table { border-collapse: collapse; font-size: .85rem; }
+td, th { border: 1px solid #ccc; padding: 2px 6px; text-align: left; }
+code { background: #eef; padding: 0 .2em; border-radius: 3px; }
+</style></head><body><h1>AgentPlaytest report — Snack Stand (model-friendly interface)</h1>
+<p><strong>Playtester:</strong> Model: nvidia/nemotron-3-ultra-550b-a55b:free via llamacpp  </p>
+<p><strong>Score:</strong> 0.0/100 (grade F)  </p>
+<p><strong>Verdict:</strong> Not model-playable: the agent could not make meaningful progress unaided.  </p>
+<p><strong>Steps:</strong> 1 of 20 max  </p>
+<p><strong>Milestones:</strong> 0/4 — none</p>
+<h2>Where it got stuck (plain English)</h2>
+<p>&bull; The model produced 1 reply with no usable action — nothing in the reply mapped to a listed action, so the step was wasted.</p>
+<p>&bull; It never moved the progress metric at all in 1 steps — no milestone was ever reached, so there was no point in the run where the agent&#x27;s actions added up to progress.</p>
+<h2>Transcript</h2>
+<table>
+<tr><td>Step</td><td>Action</td><td>Result</td></tr>
+<tr><td>1</td><td>—</td><td>ERROR: backend error after retry: IncompleteRead(0 bytes read)</td></tr>
+</table></body></html>

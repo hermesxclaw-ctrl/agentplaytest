@@ -1,0 +1,30 @@
+{
+  "target": "Snack Stand (model-friendly interface)",
+  "backend": "llamacpp",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "self_test": false,
+  "steps_taken": 1,
+  "max_steps": 20,
+  "milestones_hit": [],
+  "milestones_all": [
+    "first_sale",
+    "profit_10",
+    "profit_25",
+    "goal_reached"
+  ],
+  "progress": 0.0,
+  "invalid_replies": 1,
+  "loop_events": 0,
+  "longest_stall_steps": 0,
+  "first_stall_step": null,
+  "score": 0.0,
+  "grade": "F",
+  "goal_reached": false,
+  "verdict": "Not model-playable: the agent could not make meaningful progress unaided.",
+  "steps": [
+    {
+      "step": 1,
+      "error": "backend error after retry: IncompleteRead(0 bytes read)"
+    }
+  ]
+}

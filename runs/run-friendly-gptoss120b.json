@@ -1,0 +1,95 @@
+{
+  "target": "Snack Stand (model-friendly interface)",
+  "backend": "llamacpp",
+  "model": "openai/gpt-oss-120b",
+  "self_test": false,
+  "steps_taken": 9,
+  "max_steps": 20,
+  "milestones_hit": [
+    "first_sale",
+    "profit_10",
+    "profit_25"
+  ],
+  "milestones_all": [
+    "first_sale",
+    "profit_10",
+    "profit_25",
+    "goal_reached"
+  ],
+  "progress": 0.72,
+  "invalid_replies": 0,
+  "backend_errors": 1,
+  "incomplete": true,
+  "incomplete_reason": "backend error at step 9: HTTP Error 429: Too Many Requests",
+  "status": "incomplete (backend error \u2014 score provisional)",
+  "loop_events": 0,
+  "cycles_detected": [],
+  "longest_stall_steps": 3,
+  "first_stall_step": 3,
+  "score": 73.8,
+  "grade": "B",
+  "goal_reached": false,
+  "verdict": "Playable with friction: the agent made real progress but did not finish.",
+  "steps": [
+    {
+      "step": 1,
+      "model_reply": "{\"action\": \"buy_5_snacks\", \"why\": \"Need stock to start selling; buying 5 snacks uses half cash, leaving funds for other actions\"}",
+      "action": "buy_5_snacks",
+      "note": "Need stock to start selling; buying 5 snacks uses half cash, leaving funds for other actions",
+      "result": "Bought 5 snacks for $10. Stock is now 5."
+    },
+    {
+      "step": 2,
+      "model_reply": "{\"action\": \"open_the_stand\", \"why\": \"Open to sell the stocked snacks at current price\"}",
+      "action": "open_the_stand",
+      "note": "Open to sell the stocked snacks at current price",
+      "result": "6 customers came but you only had stock for 5 of them. Sold 5 snacks for $25."
+    },
+    {
+      "step": 3,
+      "model_reply": "{\"action\": \"end_the_day\", \"why\": \"Day is over; need to move to next day to continue selling\"}",
+      "action": "end_the_day",
+      "note": "Day is over; need to move to next day to continue selling",
+      "result": "Day 2 begins."
+    },
+    {
+      "step": 4,
+      "model_reply": "{\"action\": \"buy_10_snacks\", \"why\": \"Need stock to sell today; buying 10 gives enough inventory for potential customers and profit.\"}",
+      "action": "buy_10_snacks",
+      "note": "Need stock to sell today; buying 10 gives enough inventory for potential customers and profit.",
+      "result": "Bought 10 snacks for $20. Stock is now 10."
+    },
+    {
+      "step": 5,
+      "model_reply": "{\"action\": \"advertise_today\", \"why\": \"Boost customers today to sell more snacks and increase cash quickly\"}",
+      "action": "advertise_today",
+      "note": "Boost customers today to sell more snacks and increase cash quickly",
+      "result": "You put up flyers. More customers will come today."
+    },
+    {
+      "step": 6,
+      "model_reply": "{\"action\": \"open_the_stand\", \"why\": \"Sell the stocked snacks to earn revenue today\"}",
+      "action": "open_the_stand",
+      "note": "Sell the stocked snacks to earn revenue today",
+      "result": "Sold 9 snacks for $45."
+    },
+    {
+      "step": 7,
+      "model_reply": "{\"action\": \"set_price_high_8_dollars\", \"why\": \"Set a high price to maximize profit for the next day\"}",
+      "action": "set_price_high_8_dollars",
+      "note": "Set a high price to maximize profit for the next day",
+      "result": "Price set to $8 per snack."
+    },
+    {
+      "step": 8,
+      "model_reply": "{\"action\": \"end_the_day\", \"why\": \"Already opened today; need to end day to progress\"}",
+      "action": "end_the_day",
+      "note": "Already opened today; need to end day to progress",
+      "result": "Day 3 begins."
+    },
+    {
+      "step": 9,
+      "error": "backend error after retry: HTTP Error 429: Too Many Requests"
+    }
+  ]
+}

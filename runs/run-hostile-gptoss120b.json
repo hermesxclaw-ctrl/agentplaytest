@@ -1,0 +1,49 @@
+{
+  "target": "Snack Stand (model-hostile interface)",
+  "backend": "llamacpp",
+  "model": "openai/gpt-oss-120b",
+  "self_test": false,
+  "steps_taken": 3,
+  "max_steps": 20,
+  "milestones_hit": [],
+  "milestones_all": [
+    "first_sale",
+    "profit_10",
+    "profit_25",
+    "goal_reached"
+  ],
+  "progress": 0.0,
+  "invalid_replies": 0,
+  "backend_errors": 1,
+  "incomplete": true,
+  "incomplete_reason": "backend error at step 3: HTTP Error 429: Too Many Requests",
+  "status": "incomplete (backend error \u2014 score provisional)",
+  "loop_events": 0,
+  "cycles_detected": [],
+  "longest_stall_steps": 2,
+  "first_stall_step": 1,
+  "score": 0.0,
+  "grade": "F",
+  "goal_reached": false,
+  "verdict": "Not model-playable: the agent could not make meaningful progress unaided.",
+  "steps": [
+    {
+      "step": 1,
+      "model_reply": "{\"action\": \"op_a\", \"why\": \"Start by modifying variable A from its initial zero value\"}",
+      "action": "op_a",
+      "note": "Start by modifying variable A from its initial zero value",
+      "result": "D1"
+    },
+    {
+      "step": 2,
+      "model_reply": "{\"action\": \"op_b\", \"why\": \"to advance r from D1 to the next value\"}",
+      "action": "op_b",
+      "note": "to advance r from D1 to the next value [backend retried once]",
+      "result": "P9"
+    },
+    {
+      "step": 3,
+      "error": "backend error after retry: HTTP Error 429: Too Many Requests"
+    }
+  ]
+}

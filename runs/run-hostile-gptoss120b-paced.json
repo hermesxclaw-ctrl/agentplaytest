@@ -1,0 +1,173 @@
+{
+  "target": "Snack Stand (model-hostile interface)",
+  "backend": "llamacpp",
+  "model": "openai/gpt-oss-120b",
+  "self_test": false,
+  "steps_taken": 20,
+  "max_steps": 20,
+  "milestones_hit": [
+    "first_sale"
+  ],
+  "milestones_all": [
+    "first_sale",
+    "profit_10",
+    "profit_25",
+    "goal_reached"
+  ],
+  "progress": 0.14,
+  "invalid_replies": 0,
+  "backend_errors": 0,
+  "incomplete": false,
+  "incomplete_reason": null,
+  "status": "completed step budget",
+  "loop_events": 0,
+  "cycles_detected": [],
+  "longest_stall_steps": 7,
+  "first_stall_step": 8,
+  "score": 20.6,
+  "grade": "F",
+  "goal_reached": false,
+  "verdict": "Not model-playable: the agent could not make meaningful progress unaided.",
+  "steps": [
+    {
+      "step": 1,
+      "model_reply": "{\"action\": \"op_a\", \"why\": \"initial step to begin altering the state\"}",
+      "action": "op_a",
+      "note": "initial step to begin altering the state",
+      "result": "D1"
+    },
+    {
+      "step": 2,
+      "model_reply": "{\"action\": \"op_c\", \"why\": \"to modify the C value\"}",
+      "action": "op_c",
+      "note": "to modify the C value",
+      "result": "B1"
+    },
+    {
+      "step": 3,
+      "model_reply": "{\"action\": \"op_d\", \"why\": \"to modify the D variable\"}",
+      "action": "op_d",
+      "note": "to modify the D variable",
+      "result": "E04"
+    },
+    {
+      "step": 4,
+      "model_reply": "{\"action\": \"op_e\", \"why\": \"need to adjust the r value (E04) toward its target\"}",
+      "action": "op_e",
+      "note": "need to adjust the r value (E04) toward its target",
+      "result": "P9"
+    },
+    {
+      "step": 5,
+      "model_reply": "{\"action\": \"op_b\", \"why\": \"to change a variable not yet modified and progress toward the step goal\"}",
+      "action": "op_b",
+      "note": "to change a variable not yet modified and progress toward the step goal",
+      "result": "P9"
+    },
+    {
+      "step": 6,
+      "model_reply": "{\"action\": \"op_f\", \"why\": \"haven't tried this operation yet and need new effect\"}",
+      "action": "op_f",
+      "note": "haven't tried this operation yet and need new effect",
+      "result": "E04"
+    },
+    {
+      "step": 7,
+      "model_reply": "{\"action\": \"op_g\", \"why\": \"need to affect remaining high-value variable Z14\"}",
+      "action": "op_g",
+      "note": "need to affect remaining high-value variable Z14",
+      "result": "S1"
+    },
+    {
+      "step": 8,
+      "model_reply": "{\"action\": \"op_h\", \"why\": \"try the unused operation to advance the state\"}",
+      "action": "op_h",
+      "note": "try the unused operation to advance the state",
+      "result": "P9"
+    },
+    {
+      "step": 9,
+      "model_reply": "{\"action\": \"op_c\", \"why\": \"Try a new operation not yet used to change the state\"}",
+      "action": "op_c",
+      "note": "Try a new operation not yet used to change the state",
+      "result": "B1"
+    },
+    {
+      "step": 10,
+      "model_reply": "{\"action\": \"op_d\", \"why\": \"Other ops have failed; try the untouched op_d which may meet its preconditions now\"}",
+      "action": "op_d",
+      "note": "Other ops have failed; try the untouched op_d which may meet its preconditions now",
+      "result": "A7"
+    },
+    {
+      "step": 11,
+      "model_reply": "{\"action\":\"op_a\",\"why\":\"need to modify the untouched variable to progress toward the goal\"}",
+      "action": "op_a",
+      "note": "need to modify the untouched variable to progress toward the goal",
+      "result": "D1"
+    },
+    {
+      "step": 12,
+      "model_reply": "{\"action\": \"op_b\", \"why\": \"use an unused operation to progress toward the unknown goal\"}",
+      "action": "op_b",
+      "note": "use an unused operation to progress toward the unknown goal",
+      "result": "P9"
+    },
+    {
+      "step": 13,
+      "model_reply": "{\"action\": \"op_e\", \"why\": \"O is still zero and hasn't been changed; using op_e may adjust the O variable toward its target\"}",
+      "action": "op_e",
+      "note": "O is still zero and hasn't been changed; using op_e may adjust the O variable toward its target",
+      "result": "P9"
+    },
+    {
+      "step": 14,
+      "model_reply": "{\"action\": \"op_f\", \"why\": \"try a new operation to affect untouched variables\"}",
+      "action": "op_f",
+      "note": "try a new operation to affect untouched variables",
+      "result": "E04"
+    },
+    {
+      "step": 15,
+      "model_reply": "{\"action\": \"op_g\", \"why\": \"unused action may progress the state\"}",
+      "action": "op_g",
+      "note": "unused action may progress the state",
+      "result": "S1"
+    },
+    {
+      "step": 16,
+      "model_reply": "{\"action\": \"op_c\", \"why\": \"need to modify the C value\"}",
+      "action": "op_c",
+      "note": "need to modify the C value",
+      "result": "B1"
+    },
+    {
+      "step": 17,
+      "model_reply": "{\"action\": \"op_h\", \"why\": \"need to adjust the high Z21 value before final steps\"}",
+      "action": "op_h",
+      "note": "need to adjust the high Z21 value before final steps",
+      "result": "P9"
+    },
+    {
+      "step": 18,
+      "model_reply": "{\"action\": \"op_d\", \"why\": \"haven't tried op_d yet; likely needed to adjust the D variable\"}",
+      "action": "op_d",
+      "note": "haven't tried op_d yet; likely needed to adjust the D variable",
+      "result": "A7"
+    },
+    {
+      "step": 19,
+      "model_reply": "{\"action\": \"op_a\", \"why\": \"Need to use the remaining operation to adjust the final state\"}",
+      "action": "op_a",
+      "note": "Need to use the remaining operation to adjust the final state",
+      "result": "D1"
+    },
+    {
+      "step": 20,
+      "model_reply": "{\"action\": \"op_b\", \"why\": \"It's the only unused operation and likely needed to adjust the remaining variable\"}",
+      "action": "op_b",
+      "note": "It's the only unused operation and likely needed to adjust the remaining variable",
+      "result": "P9"
+    }
+  ]
+}

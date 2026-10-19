@@ -52,6 +52,21 @@ across runs of the *same* target, not yet across different apps.
 |---|---|---|
 | Gemma 3 4B (Q3) | **35.0 (D)** — real play: bought, sold, 2/4 milestones, then fixated on re-setting its price and never ended a day | **0.0 (F)** — cycled `op_c`/`op_d` into the same `E04` error for 20 steps, zero milestones, never moved the progress metric at all |
 | Gemma 3 1B (Q4) | **0.0 (F)** — repeated its first action for 60 straight steps | **0.0 (F)** — picked `op_a` (end day) 7 times and skipped the entire week without learning anything |
+| GPT-OSS 120B (hosted) | **100.0 (A)** — goal reached in 9 steps, all 4 milestones | **20.6 (F)** — probed all eight opaque actions systematically, decoded enough for one sale (1/4 milestones), then stalled for 7 straight steps |
+
+**Frontier validation (2026-10-18):** the GPT-OSS row is the same checker
+pointed at a hosted frontier-class model (OpenAI's GPT-OSS 120B, via Groq's
+free tier) with no code changes — just `--base-url`/`--model`, a disclosed
+12-second step pacing for the free tier's rate limits, and a 2,500-token
+reply budget (the local Gemma runs used 80; reasoning models need room to
+finish thinking before the action JSON appears). The result is the
+experiment's cleanest pair: a perfect friendly run proves the model *can*
+operate the app, and the hostile run shows what the interface bundle costs
+even it — methodical exploration buys one sale, then a wall. Earlier
+attempts the same evening (a 550B open model whose free lane dropped the
+connection at step 1, twice; a flagship model that answered probes and then
+demanded payment) are preserved in `runs/` as what they are —
+**incomplete runs, not scores**.
 
 The 4B friendly run ended at step 14 when a client timeout hit a slow
 generation on the shared 2-core build box — the transcript in `runs/`

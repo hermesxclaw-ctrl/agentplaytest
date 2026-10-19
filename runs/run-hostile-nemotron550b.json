@@ -1,0 +1,58 @@
+{
+  "target": "Snack Stand (model-hostile interface)",
+  "backend": "llamacpp",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "self_test": false,
+  "steps_taken": 5,
+  "max_steps": 20,
+  "milestones_hit": [],
+  "milestones_all": [
+    "first_sale",
+    "profit_10",
+    "profit_25",
+    "goal_reached"
+  ],
+  "progress": 0.0,
+  "invalid_replies": 1,
+  "loop_events": 0,
+  "longest_stall_steps": 4,
+  "first_stall_step": 1,
+  "score": 0.0,
+  "grade": "F",
+  "goal_reached": false,
+  "verdict": "Not model-playable: the agent could not make meaningful progress unaided.",
+  "steps": [
+    {
+      "step": 1,
+      "model_reply": "{\"action\": \"op_a\", \"why\": \"First step, try op_a to see its effect.\"}",
+      "action": "op_a",
+      "note": "First step, try op_a to see its effect.",
+      "result": "D1"
+    },
+    {
+      "step": 2,
+      "model_reply": "{\"action\": \"op_b\", \"why\": \"Try a different operation to see its effect\"}",
+      "action": "op_b",
+      "note": "Try a different operation to see its effect [backend retried once]",
+      "result": "P9"
+    },
+    {
+      "step": 3,
+      "model_reply": "{\"action\": \"op_c\", \"why\": \"Explore the effect of op_c since we haven't tried it yet.\"}",
+      "action": "op_c",
+      "note": "Explore the effect of op_c since we haven't tried it yet. [backend retried once]",
+      "result": "B1"
+    },
+    {
+      "step": 4,
+      "model_reply": "{\"action\": \"op_d\", \"why\": \"Try an unused operation to observe its effect on the state.\"}",
+      "action": "op_d",
+      "note": "Try an unused operation to observe its effect on the state.",
+      "result": "E04"
+    },
+    {
+      "step": 5,
+      "error": "backend error after retry: Remote end closed connection without response"
+    }
+  ]
+}

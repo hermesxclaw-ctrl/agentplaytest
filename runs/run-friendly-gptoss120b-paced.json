@@ -1,0 +1,99 @@
+{
+  "target": "Snack Stand (model-friendly interface)",
+  "backend": "llamacpp",
+  "model": "openai/gpt-oss-120b",
+  "self_test": false,
+  "steps_taken": 9,
+  "max_steps": 20,
+  "milestones_hit": [
+    "first_sale",
+    "profit_10",
+    "profit_25",
+    "goal_reached"
+  ],
+  "milestones_all": [
+    "first_sale",
+    "profit_10",
+    "profit_25",
+    "goal_reached"
+  ],
+  "progress": 1.0,
+  "invalid_replies": 0,
+  "backend_errors": 0,
+  "incomplete": false,
+  "incomplete_reason": null,
+  "status": "goal reached",
+  "loop_events": 0,
+  "cycles_detected": [],
+  "longest_stall_steps": 3,
+  "first_stall_step": 3,
+  "score": 100.0,
+  "grade": "A",
+  "goal_reached": true,
+  "verdict": "Model-playable: the agent reached the goal unaided.",
+  "steps": [
+    {
+      "step": 1,
+      "model_reply": "{\"action\": \"buy_5_snacks\", \"why\": \"Need stock to start selling\"}",
+      "action": "buy_5_snacks",
+      "note": "Need stock to start selling",
+      "result": "Bought 5 snacks for $10. Stock is now 5."
+    },
+    {
+      "step": 2,
+      "model_reply": "{\"action\": \"open_the_stand\", \"why\": \"Sell the stocked snacks today at current price\"}",
+      "action": "open_the_stand",
+      "note": "Sell the stocked snacks today at current price",
+      "result": "6 customers came but you only had stock for 5 of them. Sold 5 snacks for $25."
+    },
+    {
+      "step": 3,
+      "model_reply": "{\"action\": \"end_the_day\", \"why\": \"Stand already opened; need to end day to start next day's planning\"}",
+      "action": "end_the_day",
+      "note": "Stand already opened; need to end day to start next day's planning",
+      "result": "Day 2 begins."
+    },
+    {
+      "step": 4,
+      "model_reply": "{\"action\": \"buy_10_snacks\", \"why\": \"Need stock to sell enough snacks for profit today\"}",
+      "action": "buy_10_snacks",
+      "note": "Need stock to sell enough snacks for profit today",
+      "result": "Bought 10 snacks for $20. Stock is now 10."
+    },
+    {
+      "step": 5,
+      "model_reply": "{\"action\": \"advertise_today\", \"why\": \"Boost customers today to increase sales and cash\"}",
+      "action": "advertise_today",
+      "note": "Boost customers today to increase sales and cash",
+      "result": "You put up flyers. More customers will come today."
+    },
+    {
+      "step": 6,
+      "model_reply": "{\"action\": \"open_the_stand\", \"why\": \"Sell the stocked snacks to today's customers\"}",
+      "action": "open_the_stand",
+      "note": "Sell the stocked snacks to today's customers",
+      "result": "Sold 9 snacks for $45."
+    },
+    {
+      "step": 7,
+      "model_reply": "{\"action\": \"end_the_day\", \"why\": \"Day is already opened and advertised; need to finish day and move to next day.\"}",
+      "action": "end_the_day",
+      "note": "Day is already opened and advertised; need to finish day and move to next day.",
+      "result": "Day 3 begins."
+    },
+    {
+      "step": 8,
+      "model_reply": "{\"action\": \"buy_5_snacks\", \"why\": \"Need more stock to sell to today's customers and increase profit\"}",
+      "action": "buy_5_snacks",
+      "note": "Need more stock to sell to today's customers and increase profit",
+      "result": "Bought 5 snacks for $10. Stock is now 6."
+    },
+    {
+      "step": 9,
+      "model_reply": "{\"action\": \"open_the_stand\", \"why\": \"Sell current stock at $5 to exceed cash goal\"}",
+      "action": "open_the_stand",
+      "note": "Sell current stock at $5 to exceed cash goal",
+      "result": "Sold 6 snacks for $30."
+    }
+  ]
+}

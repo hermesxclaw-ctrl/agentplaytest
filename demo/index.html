@@ -20,8 +20,9 @@
 </head>
 <body>
 <h1>AgentPlaytest — demo</h1>
-<p class="sub">One tiny game (Snack Stand). One checker. Local open-weight Gemma models, run 100% locally.
-Two interfaces, two model sizes — the full 2×2 grid, all four cells captured. Same model, same harness;
+<p class="sub">One tiny game (Snack Stand). One checker. Local open-weight Gemma models, run 100% locally —
+plus one hosted frontier-model validation below. Two interfaces, two model sizes — the full 2×2 grid,
+all four cells captured. Same model, same harness;
 the only thing that changes between the left and right columns is how much the interface explains itself.</p>
 
 <div class="grid">
@@ -55,11 +56,35 @@ the only thing that changes between the left and right columns is how much the i
   </div>
 </div>
 
+<h2>Frontier validation — GPT-OSS 120B (hosted, same checker, no code changes)</h2>
+<p>Pointed at OpenAI's GPT-OSS 120B through Groq's free tier — just a different
+<code>--base-url</code>/<code>--model</code>, a disclosed 12-second step pacing for the free tier's
+rate limits, and a 2,500-token reply budget (reasoning models need room to think; the local
+Gemma runs used 80). The pair it produced is the experiment in one line:
+<strong>friendly 100.0 (A) — goal reached in 9 steps; hostile 20.6 (F)</strong> — the model probed
+all eight opaque actions systematically, decoded enough to make one sale, then stalled
+for 7 straight steps. Capability compensates for a hostile interface partially, not fully.</p>
+<div class="grid">
+  <div class="card">
+    <h2>✅ Model-friendly interface — GPT-OSS 120B</h2>
+    <p class="score good">100.0 / 100 (grade A)</p>
+    <p>Goal reached in 9 steps: bought, priced, advertised, sold — all 4 milestones.</p>
+    <iframe src="../runs/report-friendly-gptoss120b-paced.html" title="Friendly GPT-OSS run report"></iframe>
+  </div>
+  <div class="card">
+    <h2>🚧 Model-hostile interface — GPT-OSS 120B</h2>
+    <p class="score bad">20.6 / 100 (grade F)</p>
+    <p>Same model, same 20-step budget. One sale decoded out of coded feedback
+    (1 of 4 milestones, 14% progress) — then a 7-step no-progress stall.</p>
+    <iframe src="../runs/report-hostile-gptoss120b-paced.html" title="Hostile GPT-OSS run report"></iframe>
+  </div>
+</div>
+
 <p>Full transcripts live in <code>runs/</code> alongside the reports.
 Reproduce locally with the commands in the project README.</p>
-<p><em>This page displays captured reports. The model inference and the game
-simulation were run locally (Gemma via llama.cpp) — nothing on this page is a
-live model call.</em></p>
+<p><em>This page displays captured reports — nothing on it is a live model call.
+The Gemma runs were captured 100% locally (llama.cpp); the GPT-OSS 120B validation
+ran the identical checker and game simulation against a hosted inference endpoint.</em></p>
 
 <script>
   // Pull the score line out of each rendered report if available.

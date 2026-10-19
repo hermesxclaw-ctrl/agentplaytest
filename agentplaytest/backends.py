@@ -63,6 +63,16 @@ class LlamaCppBackend:
         self.max_tokens = int(os.environ.get("AGENTPLAYTEST_MAX_TOKENS", "80"))
 
     def chat(self, system, user):
+        # Optional pacing for rate-limited hosted backends: free tiers often
+        # cap tokens-per-minute, and a fast loop can outrun the cap and kill
+        # a run with 429s (observed live with gpt-oss-120b on a free tier).
+        # AGENTPLAYTEST_STEP_DELAY=<seconds> spaces requests out; use of the
+        # delay is disclosed wherever such runs are reported. Default: none.
+        delay = float(os.environ.get("AGENTPLAYTEST_STEP_DELAY", "0") or 0)
+        if delay > 0:
+            import time
+
+            time.sleep(delay)
         out = _post(
             f"{self.base_url}/v1/chat/completions",
             {
