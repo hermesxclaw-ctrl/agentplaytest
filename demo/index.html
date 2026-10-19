@@ -27,28 +27,28 @@ the only thing that changes between the left and right columns is how much the i
 <div class="grid">
   <div class="card">
     <h2>✅ Model-friendly interface — Gemma 3 4B</h2>
-    <p class="score good" id="score-friendly4b">—</p>
+    <p class="score good" id="score-friendly4b">35.0 / 100 (grade D)</p>
     <p>Plain state names, the goal stated up front, every action explained. Real play:
     bought, sold, 2 of 4 milestones — then fixated on re-setting its price.</p>
     <iframe src="../runs/report-friendly.html" title="Friendly 4B run report"></iframe>
   </div>
   <div class="card">
     <h2>🚧 Model-hostile interface — Gemma 3 4B</h2>
-    <p class="score bad" id="score-hostile4b">—</p>
+    <p class="score bad" id="score-hostile4b">0.0 / 100 (grade F)</p>
     <p>The same 4B model that scored 35 on the left. Here it cycled two coded actions into
     the same <code>E04</code> error for 20 steps and never moved the progress metric at all.</p>
     <iframe src="../runs/report-hostile-4b.html" title="Hostile 4B run report"></iframe>
   </div>
   <div class="card">
     <h2>✅ Model-friendly interface — Gemma 3 1B</h2>
-    <p class="score bad" id="score-friendly1b">—</p>
+    <p class="score bad" id="score-friendly1b">0.0 / 100 (grade F)</p>
     <p>Even with every explanation the interface can give, the 1B repeated its first action
     for 60 straight steps. Below a capability floor, the model is the bottleneck.</p>
     <iframe src="../runs/report-friendly-1b.html" title="Friendly 1B run report"></iframe>
   </div>
   <div class="card">
     <h2>🚧 Model-hostile interface — Gemma 3 1B</h2>
-    <p class="score bad" id="score-hostile1b">—</p>
+    <p class="score bad" id="score-hostile1b">0.0 / 100 (grade F)</p>
     <p>Coded keys (<code>d, c, s, p</code>), actions named <code>op_a</code>…<code>op_h</code>,
     result codes instead of sentences, and the goal never mentioned. It skipped the whole week in 7 steps.</p>
     <iframe src="../runs/report-hostile.html" title="Hostile 1B run report"></iframe>
@@ -57,6 +57,9 @@ the only thing that changes between the left and right columns is how much the i
 
 <p>Full transcripts live in <code>runs/</code> alongside the reports.
 Reproduce locally with the commands in the project README.</p>
+<p><em>This page displays captured reports. The model inference and the game
+simulation were run locally (Gemma via llama.cpp) — nothing on this page is a
+live model call.</em></p>
 
 <script>
   // Pull the score line out of each rendered report if available.

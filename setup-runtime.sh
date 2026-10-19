@@ -2,6 +2,10 @@
 # Fetch a local inference runtime (llama.cpp) + a Gemma GGUF into .runtime/.
 # All URLs are resolved from the official GitHub / HuggingFace APIs at run time.
 set -euo pipefail
+# .runtime/ is gitignored, so on a clean clone it does not exist yet —
+# create it (and models/) BEFORE cd-ing into it. (Bug caught in external
+# review: the old order made a fresh clone fail at the setup step.)
+mkdir -p "$(dirname "$0")/.runtime/models"
 cd "$(dirname "$0")/.runtime"
 
 if [ ! -x llama/llama-server ]; then

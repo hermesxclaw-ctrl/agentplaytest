@@ -32,8 +32,19 @@ interfaces over the *identical* simulation:
   action names in scrambled order, decoy stats, one-letter result codes,
   and the goal never mentioned anywhere.
 
-Same checker, same model, same rules. Any score difference is caused by
-the interface alone. Captured reports live in `runs/`.
+Same checker, same model, same rules — the game simulation, harness and
+model are held constant while the interface contract changes *as a bundle*
+(goal visibility, state naming, action naming, feedback style all change
+together, the way real software degrades). Captured reports live in `runs/`.
+
+**Read the results honestly:** there is one captured run per cell, the two
+4B runs used different step budgets (60 configured for friendly, 20 for
+hostile), and the friendly 4B run stopped early on a backend timeout. These
+are illustrative results from an initial experiment — a proof of concept,
+not a statistically validated benchmark. The score is a prototype heuristic
+(60% milestones + 40% best progress, minus penalties), computed from
+target-supplied progress and milestone functions, so scores are comparable
+across runs of the *same* target, not yet across different apps.
 
 **Which model?** Captured results (all fully local, llama.cpp):
 
@@ -48,8 +59,8 @@ shows exactly where and says so. The 4B hostile run was captured on
 2026-10-18 with a 20-step budget (see `runs/report-hostile-4b.md`),
 completing the grid.
 
-Each row is a controlled comparison — same model, same harness, only
-the interface differs. The 4B row is the headline: a more capable
+Each row holds the model and harness constant while the interface bundle
+differs. The 4B row is the headline: a more capable
 playtester turns the friendly interface into real, scoreable play
 (35.0), and the *same* model scores absolute zero the moment the
 interface stops explaining itself. That became one of the project's
@@ -58,6 +69,34 @@ together, and below a capability floor the model is the bottleneck no
 matter how good the interface is. AgentPlaytest says so in its own
 reports instead of hiding it — which is rather the point of a testing
 tool.
+
+### Review fixes (2026-10-18)
+
+An external review tore the first version of this checker apart, and three
+of its findings were real bugs. They are fixed in the current code:
+
+- **Backend failures are no longer scored as model failures.** A timeout or
+  HTTP error used to increment the same counter as a malformed model reply,
+  and the report then claimed the model "produced a reply with no usable
+  action" when it never got to reply at all. Backend errors now have their
+  own counter, and a run that dies on one is marked **incomplete** with a
+  provisional score. Honest bookkeeping note: the captured 4B friendly
+  score of 35.0 was recorded under the old accounting, which charged that
+  run a 2-point penalty for its step-14 timeout. The captured score stands
+  as recorded; new runs account correctly.
+- **The stuck detector now sees action cycles.** It used to catch only the
+  *same* action repeated — it was blind to an agent alternating between two
+  actions forever. It now detects repeated short cycles (2–4 actions) that
+  return the state to where the cycle started with no progress inside it.
+  The captured 4B hostile report predates this fix and shows
+  `loop_events: 0`, even though its transcript is exactly an
+  `op_c`/`op_d` cycle — the current checker flags that pattern (there is a
+  regression test with a cycling fake model to prove it).
+- **A clean clone reproduces again.** `setup-runtime.sh` used to `cd` into
+  `.runtime/` before creating it (the directory is gitignored, so a fresh
+  clone failed at step one), and `run-demo.sh` used output labels that
+  collided with the captured artifacts. Both are fixed; reproduction runs
+  get their own labels and can never overwrite captured evidence.
 
 ## Running it
 

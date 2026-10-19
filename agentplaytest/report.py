@@ -34,12 +34,31 @@ def _diagnosis(run):
             + (f'. First example: "{example}"' if example else "")
             + " — nothing in the reply mapped to a listed action, so the step was wasted."
         )
-    if run["loop_events"]:
+    if run.get("backend_errors"):
         lines.append(
-            f"It fell into {run['loop_events']} repeat loop(s): the same action three times "
-            "in a row with the state not changing at all — the classic sign the app returned "
-            "feedback the agent could not interpret."
+            f"The run stopped early on a backend failure ({run['backend_errors']} failed "
+            f"request(s): {run.get('incomplete_reason', 'see transcript')}). That is an "
+            "infrastructure failure, not a model decision — the model never got to reply — "
+            "so this score is provisional and the run should be repeated before it is "
+            "compared with completed runs."
         )
+    if run["loop_events"]:
+        cycles = run.get("cycles_detected") or []
+        if cycles:
+            lines.append(
+                f"It fell into {run['loop_events']} repeat cycle(s) — short action patterns "
+                f"repeated with the state returning to where the cycle started and no "
+                f"progress inside it ({'; '.join(cycles)}). The agent kept issuing actions "
+                "that changed nothing; whether the app's feedback was uninterpretable or "
+                "the model failed to adapt to clear feedback, the transcript shows exactly "
+                "which actions and results repeated."
+            )
+        else:
+            lines.append(
+                f"It fell into {run['loop_events']} repeat loop(s): the same action three times "
+                "in a row with the state not changing at all. The agent kept issuing an action "
+                "that changed nothing — the transcript shows what feedback it was getting."
+            )
     if run["longest_stall_steps"] >= 4:
         lines.append(
             f"Longest no-progress stretch: {run['longest_stall_steps']} steps, starting at "
@@ -76,6 +95,13 @@ def write_markdown(run, path):
         f"**Steps:** {run['steps_taken']} of {run['max_steps']} max  ",
         f"**Milestones:** {len(run['milestones_hit'])}/{len(run['milestones_all'])} — "
         + (", ".join(run["milestones_hit"]) or "none"),
+    ]
+    if run.get("incomplete"):
+        lines.append(
+            f"**Status:** INCOMPLETE — {run.get('incomplete_reason', 'backend error')}. "
+            "Score is provisional."
+        )
+    lines += [
         "",
         "## Where it got stuck (plain English)",
         "",

@@ -15,25 +15,52 @@ smoke-test the checker harness itself without a model. Its output files are
 stamped SELF-TEST and must never be presented as model evidence.
 """
 import json
+import os
 import urllib.request
 
 
-def _post(url, payload, timeout=600):
+def _post(url, payload, timeout=600, api_key=None):
+    # A browser UA: some hosted gateways reject obvious script clients
+    # (observed live: APInex returns 403 to urllib's default UA, 200 to this).
+    headers = {
+        "Content-Type": "application/json",
+        "User-Agent": (
+            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/126.0 Safari/537.36"
+        ),
+    }
+    if api_key:
+        headers["Authorization"] = f"Bearer {api_key}"
     req = urllib.request.Request(
         url,
         data=json.dumps(payload).encode(),
-        headers={"Content-Type": "application/json"},
+        headers=headers,
     )
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         return json.loads(resp.read().decode())
 
 
 class LlamaCppBackend:
+    """OpenAI-compatible chat endpoint.
+
+    Defaults to a local llama.cpp server, but --base-url can point at ANY
+    OpenAI-compatible endpoint (local or hosted). Set the environment
+    variable AGENTPLAYTEST_API_KEY to send a Bearer token — that is how the
+    frontier-model validation runs were done, with no code changes to the
+    checker itself.
+    """
+
     kind = "llamacpp"
 
     def __init__(self, base_url="http://localhost:8080", model="gemma-3-1b-it"):
         self.base_url = base_url.rstrip("/")
         self.model = model
+        self.api_key = os.environ.get("AGENTPLAYTEST_API_KEY")
+        # Default 80 (the budget every local Gemma run in this repo used).
+        # Reasoning-style hosted models need room to finish thinking before
+        # the JSON action appears, so the budget is raisable per run via the
+        # environment — and is disclosed wherever such a run is reported.
+        self.max_tokens = int(os.environ.get("AGENTPLAYTEST_MAX_TOKENS", "80"))
 
     def chat(self, system, user):
         out = _post(
@@ -45,8 +72,9 @@ class LlamaCppBackend:
                     {"role": "user", "content": user},
                 ],
                 "temperature": 0.2,
-                "max_tokens": 80,
+                "max_tokens": self.max_tokens,
             },
+            api_key=self.api_key,
         )
         return out["choices"][0]["message"]["content"]
 

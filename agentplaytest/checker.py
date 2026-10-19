@@ -73,10 +73,48 @@ def _state_hash(target):
     return hashlib.sha256(blob.encode()).hexdigest()[:12]
 
 
+def _detect_cycle(actions, hashes, progressed_flags):
+    """Detect a short repeated action cycle that changed nothing.
+
+    Looks at the tail of the run: for cycle lengths 2..4, checks whether the
+    last 2*L actions are the same L-action pattern twice, whether the state
+    hash at the end equals the hash where the window started (the agent is
+    back where it began), and whether any step in the window made progress.
+    Returns the pattern tuple, or None. Catches the classic two-action
+    alternation (op_c, op_d, op_c, op_d...) that a same-action detector
+    structurally cannot see.
+    """
+    n = len(actions)
+    for length in (2, 3, 4):
+        if n < 2 * length:
+            continue
+        window = actions[n - 2 * length:]
+        pattern = tuple(window[:length])
+        if tuple(window[length:]) != pattern:
+            continue
+        if hashes[n] != hashes[n - 2 * length]:
+            continue
+        if any(progressed_flags[n - 2 * length:]):
+            continue
+        # Canonical rotation: (op_d, op_c) is the same cycle as
+        # (op_c, op_d) seen one step later — normalize so a continuing
+        # cycle is recognized as one episode, not recounted every step.
+        rotations = [pattern[i:] + pattern[:i] for i in range(length)]
+        return min(rotations)
+    return None
+
+
 def run_playtest(target, backend, max_steps=60, verbose=False):
     steps = []
     invalid = 0
+    backend_errors = 0
+    incomplete_reason = None
     loop_events = 0
+    cycles_found = []
+    active_cycle = None
+    action_log = []        # actions taken, in order (for cycle detection)
+    hash_log = [_state_hash(target)]  # state hash before step 1, then after each step
+    progress_log = []      # per-step: did this step make progress?
     steps_since_progress = 0
     longest_stall = 0
     first_stall_step = None
@@ -100,8 +138,15 @@ def run_playtest(target, backend, max_steps=60, verbose=False):
             try:
                 reply = backend.chat(SYSTEM_PROMPT, prompt)
             except Exception as exc:
+                # A backend failure (timeout, HTTP error, dropped connection)
+                # is an infrastructure failure, NOT a model decision. It is
+                # counted separately and marks the run incomplete — the score
+                # below is provisional and must never be read as the model
+                # having replied badly. (Fixed after an external review caught
+                # a timeout being reported as an invalid model reply.)
                 steps.append({"step": step, "error": f"backend error after retry: {exc}"})
-                invalid += 1
+                backend_errors += 1
+                incomplete_reason = f"backend error at step {step}: {exc}"
                 break
         action, note = parse_action(reply, target.actions())
         record = {
@@ -138,6 +183,21 @@ def run_playtest(target, backend, max_steps=60, verbose=False):
             if steps_since_progress > longest_stall:
                 longest_stall = steps_since_progress
                 first_stall_step = step - steps_since_progress + 1
+        # Cycle detection: repeated short action patterns that return the
+        # state to where the window started, with no progress inside it.
+        action_log.append(action)
+        hash_log.append(new_hash)
+        progress_log.append(progressed)
+        cycle = _detect_cycle(action_log, hash_log, progress_log)
+        if cycle is not None and cycle != active_cycle:
+            loop_events += 1
+            active_cycle = cycle
+            record["loop"] = True
+            record["cycle"] = " -> ".join(cycle)
+            if " -> ".join(cycle) not in cycles_found:
+                cycles_found.append(" -> ".join(cycle))
+        elif cycle is None:
+            active_cycle = None
         prev_hash = new_hash
         prev_action = action
         steps.append(record)
@@ -169,7 +229,16 @@ def run_playtest(target, backend, max_steps=60, verbose=False):
         "milestones_all": all_milestones,
         "progress": round(best_progress, 3),
         "invalid_replies": invalid,
+        "backend_errors": backend_errors,
+        "incomplete": incomplete_reason is not None,
+        "incomplete_reason": incomplete_reason,
+        "status": (
+            "incomplete (backend error — score provisional)"
+            if incomplete_reason is not None
+            else "goal reached" if goal_reached else "completed step budget"
+        ),
         "loop_events": loop_events,
+        "cycles_detected": cycles_found,
         "longest_stall_steps": longest_stall,
         "first_stall_step": first_stall_step,
         "score": round(score, 1),
