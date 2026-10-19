@@ -21,27 +21,41 @@
 <body>
 <h1>AgentPlaytest — demo</h1>
 <p class="sub">One tiny game (Snack Stand). One checker. Local open-weight Gemma models, run 100% locally.
-Two interfaces. Note the two captured reports below use different model sizes — the friendly
-report is Gemma 3 4B, the hostile report is Gemma 3 1B (the 4B hostile run was not captured;
-see the project README for the full results grid, including that gap).</p>
+Two interfaces, two model sizes — the full 2×2 grid, all four cells captured. Same model, same harness;
+the only thing that changes between the left and right columns is how much the interface explains itself.</p>
 
 <div class="grid">
   <div class="card">
     <h2>✅ Model-friendly interface — Gemma 3 4B</h2>
-    <p class="score good" id="score-friendly">—</p>
-    <p>Plain state names, the goal stated up front, every action explained.</p>
-    <iframe src="../runs/report-friendly.html" title="Friendly run report"></iframe>
+    <p class="score good" id="score-friendly4b">—</p>
+    <p>Plain state names, the goal stated up front, every action explained. Real play:
+    bought, sold, 2 of 4 milestones — then fixated on re-setting its price.</p>
+    <iframe src="../runs/report-friendly.html" title="Friendly 4B run report"></iframe>
+  </div>
+  <div class="card">
+    <h2>🚧 Model-hostile interface — Gemma 3 4B</h2>
+    <p class="score bad" id="score-hostile4b">—</p>
+    <p>The same 4B model that scored 35 on the left. Here it cycled two coded actions into
+    the same <code>E04</code> error for 20 steps and never moved the progress metric at all.</p>
+    <iframe src="../runs/report-hostile-4b.html" title="Hostile 4B run report"></iframe>
+  </div>
+  <div class="card">
+    <h2>✅ Model-friendly interface — Gemma 3 1B</h2>
+    <p class="score bad" id="score-friendly1b">—</p>
+    <p>Even with every explanation the interface can give, the 1B repeated its first action
+    for 60 straight steps. Below a capability floor, the model is the bottleneck.</p>
+    <iframe src="../runs/report-friendly-1b.html" title="Friendly 1B run report"></iframe>
   </div>
   <div class="card">
     <h2>🚧 Model-hostile interface — Gemma 3 1B</h2>
-    <p class="score bad" id="score-hostile">—</p>
+    <p class="score bad" id="score-hostile1b">—</p>
     <p>Coded keys (<code>d, c, s, p</code>), actions named <code>op_a</code>…<code>op_h</code>,
-    result codes instead of sentences, and the goal never mentioned.</p>
-    <iframe src="../runs/report-hostile.html" title="Hostile run report"></iframe>
+    result codes instead of sentences, and the goal never mentioned. It skipped the whole week in 7 steps.</p>
+    <iframe src="../runs/report-hostile.html" title="Hostile 1B run report"></iframe>
   </div>
 </div>
 
-<p>Full transcripts: <code>runs/run-friendly.json</code> and <code>runs/run-hostile.json</code>.
+<p>Full transcripts live in <code>runs/</code> alongside the reports.
 Reproduce locally with the commands in the project README.</p>
 
 <script>
@@ -53,8 +67,10 @@ Reproduce locally with the commands in the project README.</p>
       if (m) document.getElementById(id).textContent = m[1] + " / 100 (grade " + m[2] + ")";
     } catch (e) { /* file:// or missing export — leave the dash */ }
   }
-  fill("score-friendly", "../runs/report-friendly.html");
-  fill("score-hostile", "../runs/report-hostile.html");
+  fill("score-friendly4b", "../runs/report-friendly.html");
+  fill("score-hostile4b", "../runs/report-hostile-4b.html");
+  fill("score-friendly1b", "../runs/report-friendly-1b.html");
+  fill("score-hostile1b", "../runs/report-hostile.html");
 </script>
 </body>
 </html>

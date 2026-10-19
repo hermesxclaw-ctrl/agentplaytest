@@ -1,0 +1,166 @@
+{
+  "target": "Snack Stand (model-hostile interface)",
+  "backend": "llamacpp",
+  "model": "gemma-3-4b-it",
+  "self_test": false,
+  "steps_taken": 20,
+  "max_steps": 20,
+  "milestones_hit": [],
+  "milestones_all": [
+    "first_sale",
+    "profit_10",
+    "profit_25",
+    "goal_reached"
+  ],
+  "progress": 0.0,
+  "invalid_replies": 0,
+  "loop_events": 0,
+  "longest_stall_steps": 20,
+  "first_stall_step": 1,
+  "score": 0.0,
+  "grade": "F",
+  "goal_reached": false,
+  "verdict": "Not model-playable: the agent could not make meaningful progress unaided.",
+  "steps": [
+    {
+      "step": 1,
+      "model_reply": "```json\n{\"action\": \"op_b\", \"why\": \"Increase the 'c' value\"}\n```",
+      "action": "op_b",
+      "note": "Increase the 'c' value",
+      "result": "P9"
+    },
+    {
+      "step": 2,
+      "model_reply": "```json\n{\"action\": \"op_c\", \"why\": \"Increase C\"}\n```",
+      "action": "op_c",
+      "note": "Increase C",
+      "result": "B1"
+    },
+    {
+      "step": 3,
+      "model_reply": "```json\n{\"action\": \"op_a\", \"why\": \"Increase the 'a' value\"}\n```",
+      "action": "op_a",
+      "note": "Increase the 'a' value",
+      "result": "D1"
+    },
+    {
+      "step": 4,
+      "model_reply": "{\"action\": \"op_d\", \"why\": \"Increase the 'd' value\"}",
+      "action": "op_d",
+      "note": "Increase the 'd' value",
+      "result": "E04"
+    },
+    {
+      "step": 5,
+      "model_reply": "```json\n{\"action\": \"op_c\", \"why\": \"Increase the 'p' value\"}\n```",
+      "action": "op_c",
+      "note": "Increase the 'p' value",
+      "result": "E04"
+    },
+    {
+      "step": 6,
+      "model_reply": "```json\n{\"action\": \"op_d\", \"why\": \"Increase the 'd' value to see if it affects the 'r' value.\"}\n```",
+      "action": "op_d",
+      "note": "Increase the 'd' value to see if it affects the 'r' value.",
+      "result": "E04"
+    },
+    {
+      "step": 7,
+      "model_reply": "```json\n{\"action\": \"op_d\", \"why\": \"Increase the 'p' value\"}\n```",
+      "action": "op_d",
+      "note": "Increase the 'p' value",
+      "result": "E04"
+    },
+    {
+      "step": 8,
+      "model_reply": "```json\n{\"action\": \"op_c\", \"why\": \"Attempting to increase the 'c' value, as it's currently at 0 and I've been repeatedly changing it.\"}\n```",
+      "action": "op_c",
+      "note": "Attempting to increase the 'c' value, as it's currently at 0 and I've been repeatedly changing it.",
+      "result": "E04"
+    },
+    {
+      "step": 9,
+      "model_reply": "```json\n{\"action\": \"op_d\", \"why\": \"Increase the 'd' value\"}\n```",
+      "action": "op_d",
+      "note": "Increase the 'd' value",
+      "result": "E04"
+    },
+    {
+      "step": 10,
+      "model_reply": "{\"action\": \"op_a\", \"why\": \"Change the value of 'a'\"}",
+      "action": "op_a",
+      "note": "Change the value of 'a'",
+      "result": "D1"
+    },
+    {
+      "step": 11,
+      "model_reply": "```json\n{\"action\": \"op_c\", \"why\": \"Increase C value\"}\n```",
+      "action": "op_c",
+      "note": "Increase C value",
+      "result": "E04"
+    },
+    {
+      "step": 12,
+      "model_reply": "```json\n{\"action\": \"op_d\", \"why\": \"I want to see how the 'd' value changes.\"}\n```",
+      "action": "op_d",
+      "note": "I want to see how the 'd' value changes.",
+      "result": "E04"
+    },
+    {
+      "step": 13,
+      "model_reply": "{\"action\": \"op_c\", \"why\": \"Trying a different value for C\"}",
+      "action": "op_c",
+      "note": "Trying a different value for C",
+      "result": "E04"
+    },
+    {
+      "step": 14,
+      "model_reply": "```json\n{\"action\": \"op_c\", \"why\": \"Trying a different value for C\"}\n```",
+      "action": "op_c",
+      "note": "Trying a different value for C",
+      "result": "E04"
+    },
+    {
+      "step": 15,
+      "model_reply": "{\"action\": \"op_d\", \"why\": \"Trying a different value for 'd'\"}",
+      "action": "op_d",
+      "note": "Trying a different value for 'd'",
+      "result": "E04"
+    },
+    {
+      "step": 16,
+      "model_reply": "```json\n{\"action\": \"op_c\", \"why\": \"Increase C value\"}\n```",
+      "action": "op_c",
+      "note": "Increase C value",
+      "result": "E04"
+    },
+    {
+      "step": 17,
+      "model_reply": "```json\n{\"action\": \"op_a\", \"why\": \"Change the value of 'a'\"}\n```",
+      "action": "op_a",
+      "note": "Change the value of 'a'",
+      "result": "D1"
+    },
+    {
+      "step": 18,
+      "model_reply": "```json\n{\"action\": \"op_c\", \"why\": \"Increase the 'c' value\"}\n```",
+      "action": "op_c",
+      "note": "Increase the 'c' value",
+      "result": "E04"
+    },
+    {
+      "step": 19,
+      "model_reply": "```json\n{\"action\": \"op_c\", \"why\": \"Changing the value of 'c' seems logical given the previous changes.\"}\n```",
+      "action": "op_c",
+      "note": "Changing the value of 'c' seems logical given the previous changes.",
+      "result": "E04"
+    },
+    {
+      "step": 20,
+      "model_reply": "```json\n{\"action\": \"op_d\", \"why\": \"I want to see what happens when I change the 'd' value.\"}\n```",
+      "action": "op_d",
+      "note": "I want to see what happens when I change the 'd' value.",
+      "result": "E04"
+    }
+  ]
+}

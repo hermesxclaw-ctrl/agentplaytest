@@ -39,23 +39,25 @@ the interface alone. Captured reports live in `runs/`.
 
 | Playtester | Friendly interface | Hostile interface |
 |---|---|---|
-| Gemma 3 4B (Q3) | **35.0 (D)** — real play: bought, sold, 2/4 milestones, then fixated on re-setting its price and never ended a day | not captured* |
+| Gemma 3 4B (Q3) | **35.0 (D)** — real play: bought, sold, 2/4 milestones, then fixated on re-setting its price and never ended a day | **0.0 (F)** — cycled `op_c`/`op_d` into the same `E04` error for 20 steps, zero milestones, never moved the progress metric at all |
 | Gemma 3 1B (Q4) | **0.0 (F)** — repeated its first action for 60 straight steps | **0.0 (F)** — picked `op_a` (end day) 7 times and skipped the entire week without learning anything |
 
-\* The 4B's generation slowed to a crawl on the shared 2-core build box
-(one reply took ~5 minutes), so its hostile run was not captured; re-run
-`run-demo.sh` on a quieter machine to complete the grid. The 4B friendly
-run itself ended at step 14 when a client timeout hit a slow generation —
-the transcript in `runs/` shows exactly where and says so.
+The 4B friendly run ended at step 14 when a client timeout hit a slow
+generation on the shared 2-core build box — the transcript in `runs/`
+shows exactly where and says so. The 4B hostile run was captured on
+2026-10-18 with a 20-step budget (see `runs/report-hostile-4b.md`),
+completing the grid.
 
-The 1B row is the controlled comparison — same model, same harness, only
-the interface differs — and the 4B row shows what changes when the
-playtester gets more capable: the friendly interface starts producing
-real, scoreable play. That became one of the project's genuine findings:
-a playability score measures model × interface together, and below a
-capability floor the model is the bottleneck no matter how good the
-interface is. AgentPlaytest says so in its own reports instead of hiding
-it — which is rather the point of a testing tool.
+Each row is a controlled comparison — same model, same harness, only
+the interface differs. The 4B row is the headline: a more capable
+playtester turns the friendly interface into real, scoreable play
+(35.0), and the *same* model scores absolute zero the moment the
+interface stops explaining itself. That became one of the project's
+genuine findings: a playability score measures model × interface
+together, and below a capability floor the model is the bottleneck no
+matter how good the interface is. AgentPlaytest says so in its own
+reports instead of hiding it — which is rather the point of a testing
+tool.
 
 ## Running it
 
