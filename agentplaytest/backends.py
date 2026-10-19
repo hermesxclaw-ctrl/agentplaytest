@@ -86,7 +86,16 @@ class LlamaCppBackend:
             },
             api_key=self.api_key,
         )
-        return out["choices"][0]["message"]["content"]
+        content = out["choices"][0]["message"].get("content")
+        if content is None:
+            # Some hosted endpoints (observed: NVIDIA NIM serving GLM-5.3)
+            # return HTTP 200 with a null content field when the model spent
+            # its whole budget reasoning. That is a backend/response-shape
+            # failure, not a model reply: raise so the checker's backend-error
+            # accounting (retry once, then mark incomplete) handles it,
+            # instead of crashing the recorder on None.strip().
+            raise RuntimeError("backend returned null message content")
+        return content
 
 
 class OllamaBackend:

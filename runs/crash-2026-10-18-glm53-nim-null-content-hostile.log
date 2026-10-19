@@ -1,0 +1,12 @@
+[agentplaytest] target=Snack Stand (model-hostile interface) backend=llamacpp model=z-ai/glm-5.3
+  step  1: op_a -> D1
+Traceback (most recent call last):
+  File "/home/hatch/workspace/hacktoberfest-side-hustle-2026/agentplaytest/playtest.py", line 65, in <module>
+    main()
+  File "/home/hatch/workspace/hacktoberfest-side-hustle-2026/agentplaytest/playtest.py", line 50, in main
+    run = run_playtest(target, backend, max_steps=args.max_steps, verbose=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hatch/workspace/hacktoberfest-side-hustle-2026/agentplaytest/agentplaytest/checker.py", line 154, in run_playtest
+    "model_reply": reply.strip()[:400],
+                   ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'strip'

@@ -148,6 +148,8 @@ def run_playtest(target, backend, max_steps=60, verbose=False):
                 backend_errors += 1
                 incomplete_reason = f"backend error at step {step}: {exc}"
                 break
+        if reply is None:
+            reply = ""  # belt-and-braces: no backend oddity may crash the recorder
         action, note = parse_action(reply, target.actions())
         record = {
             "step": step,

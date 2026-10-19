@@ -1,0 +1,35 @@
+{
+  "target": "Snack Stand (model-friendly interface)",
+  "backend": "llamacpp",
+  "model": "deepseek-ai/deepseek-v4.1-flash",
+  "self_test": false,
+  "steps_taken": 1,
+  "max_steps": 3,
+  "milestones_hit": [],
+  "milestones_all": [
+    "first_sale",
+    "profit_10",
+    "profit_25",
+    "goal_reached"
+  ],
+  "progress": 0.0,
+  "invalid_replies": 0,
+  "backend_errors": 1,
+  "incomplete": true,
+  "incomplete_reason": "backend error at step 1: Remote end closed connection without response",
+  "status": "incomplete (backend error \u2014 score provisional)",
+  "loop_events": 0,
+  "cycles_detected": [],
+  "longest_stall_steps": 0,
+  "first_stall_step": null,
+  "score": 0.0,
+  "grade": "F",
+  "goal_reached": false,
+  "verdict": "Not model-playable: the agent could not make meaningful progress unaided.",
+  "steps": [
+    {
+      "step": 1,
+      "error": "backend error after retry: Remote end closed connection without response"
+    }
+  ]
+}
