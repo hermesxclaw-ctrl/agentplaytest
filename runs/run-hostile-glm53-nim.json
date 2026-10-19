@@ -1,0 +1,49 @@
+{
+  "target": "Snack Stand (model-hostile interface)",
+  "backend": "llamacpp",
+  "model": "z-ai/glm-5.3",
+  "self_test": false,
+  "steps_taken": 3,
+  "max_steps": 20,
+  "milestones_hit": [],
+  "milestones_all": [
+    "first_sale",
+    "profit_10",
+    "profit_25",
+    "goal_reached"
+  ],
+  "progress": 0.0,
+  "invalid_replies": 0,
+  "backend_errors": 1,
+  "incomplete": true,
+  "incomplete_reason": "backend error at step 3: backend returned null message content",
+  "status": "incomplete (backend error \u2014 score provisional)",
+  "loop_events": 0,
+  "cycles_detected": [],
+  "longest_stall_steps": 2,
+  "first_stall_step": 1,
+  "score": 0.0,
+  "grade": "F",
+  "goal_reached": false,
+  "verdict": "Not model-playable: the agent could not make meaningful progress unaided.",
+  "steps": [
+    {
+      "step": 1,
+      "model_reply": "{\"action\": \"op_a\", \"why\": \"First step with no history \u2014 start exploring what the most basic action does.\"}",
+      "action": "op_a",
+      "note": "First step with no history \u2014 start exploring what the most basic action does.",
+      "result": "D1"
+    },
+    {
+      "step": 2,
+      "model_reply": "{\"action\": \"op_b\", \"why\": \"op_a yielded D1 with no visible stat change; probing op_b to map each action's effect early in the run.\"}",
+      "action": "op_b",
+      "note": "op_a yielded D1 with no visible stat change; probing op_b to map each action's effect early in the run.",
+      "result": "P9"
+    },
+    {
+      "step": 3,
+      "error": "backend error after retry: backend returned null message content"
+    }
+  ]
+}
