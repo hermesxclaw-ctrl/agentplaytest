@@ -1,0 +1,120 @@
+{
+  "target": "Snack Stand (model-friendly interface)",
+  "backend": "llamacpp",
+  "model": "z-ai/glm-5.3-flash",
+  "self_test": false,
+  "steps_taken": 12,
+  "max_steps": 20,
+  "milestones_hit": [
+    "first_sale",
+    "profit_10",
+    "profit_25",
+    "goal_reached"
+  ],
+  "milestones_all": [
+    "first_sale",
+    "profit_10",
+    "profit_25",
+    "goal_reached"
+  ],
+  "progress": 1.0,
+  "invalid_replies": 0,
+  "backend_errors": 0,
+  "incomplete": false,
+  "incomplete_reason": null,
+  "status": "goal reached",
+  "loop_events": 0,
+  "cycles_detected": [],
+  "longest_stall_steps": 4,
+  "first_stall_step": 3,
+  "score": 100.0,
+  "grade": "A",
+  "goal_reached": true,
+  "verdict": "Model-playable: the agent reached the goal unaided.",
+  "steps": [
+    {
+      "step": 1,
+      "model_reply": "{\"action\": \"buy_10_snacks\", \"why\": \"I need stock before selling; 10 snacks uses all $20 but covers today's ~6 customers plus buffer for tomorrow.\"}",
+      "action": "buy_10_snacks",
+      "note": "I need stock before selling; 10 snacks uses all $20 but covers today's ~6 customers plus buffer for tomorrow.",
+      "result": "Bought 10 snacks for $20. Stock is now 10."
+    },
+    {
+      "step": 2,
+      "model_reply": "{\"action\": \"open_the_stand\", \"why\": \"Price is already $5 with 10 snacks in stock; opening today sells to ~6 customers for ~$30 revenue, the best daily profit available.\"}",
+      "action": "open_the_stand",
+      "note": "Price is already $5 with 10 snacks in stock; opening today sells to ~6 customers for ~$30 revenue, the best daily profit available.",
+      "result": "Sold 6 snacks for $30."
+    },
+    {
+      "step": 3,
+      "model_reply": "{\"action\": \"end_the_day\", \"why\": \"I already opened and sold today, so no more sales are possible today; I'll save my $30 and restock tomorrow morning before opening.\"}",
+      "action": "end_the_day",
+      "note": "I already opened and sold today, so no more sales are possible today; I'll save my $30 and restock tomorrow morning before opening.",
+      "result": "Day 2 begins."
+    },
+    {
+      "step": 4,
+      "model_reply": "{\"action\": \"buy_5_snacks\", \"why\": \"I have only 4 snacks; buying 5 brings stock to 9, enough to cover ~6 customers (or 9 if I advertise) at $5, while keeping $20 cash as buffer.\"}",
+      "action": "buy_5_snacks",
+      "note": "I have only 4 snacks; buying 5 brings stock to 9, enough to cover ~6 customers (or 9 if I advertise) at $5, while keeping $20 cash as buffer.",
+      "result": "Bought 5 snacks for $10. Stock is now 9."
+    },
+    {
+      "step": 5,
+      "model_reply": "{\"action\": \"advertise_today\", \"why\": \"I have 9 snacks and expect 6 customers at $5; advertising adds 3 customers for $4, letting me sell all 9 snacks today for $45 revenue \u2014 a net gain over just selling 6.\"}",
+      "action": "advertise_today",
+      "note": "I have 9 snacks and expect 6 customers at $5; advertising adds 3 customers for $4, letting me sell all 9 snacks today for $45 revenue \u2014 a net gain over just selling 6.",
+      "result": "You put up flyers. More customers will come today."
+    },
+    {
+      "step": 6,
+      "model_reply": "{\"action\": \"set_price_high_8_dollars\", \"why\": \"With today's 3 ad bonus, high price draws ~6 customers",
+      "action": "set_price_high_8_dollars",
+      "note": "(recovered: action named in free text) [backend retried once]",
+      "result": "Price set to $8 per snack."
+    },
+    {
+      "step": 7,
+      "model_reply": "{\"action\": \"open_the_stand\", \"why\": \"Price is $8 and advertising adds 3 extra customers (~6 total), so opening now should sell up to 6 snacks for ~$48 revenue, which my 9 snacks in stock can cover.\"}",
+      "action": "open_the_stand",
+      "note": "Price is $8 and advertising adds 3 extra customers (~6 total), so opening now should sell up to 6 snacks for ~$48 revenue, which my 9 snacks in stock can cover.",
+      "result": "Sold 6 snacks for $48."
+    },
+    {
+      "step": 8,
+      "model_reply": "{\"action\": \"buy_5_snacks\", \"why\": \"I can't open again today, so I'll stock up for tomorrow \u2014 3 snacks won't cover the ~6 customers advertising brings, and $10 leaves plenty of cash cushion toward the $70 goal.\"}",
+      "action": "buy_5_snacks",
+      "note": "I can't open again today, so I'll stock up for tomorrow \u2014 3 snacks won't cover the ~6 customers advertising brings, and $10 leaves plenty of cash cushion toward the $70 goal.",
+      "result": "Bought 5 snacks for $10. Stock is now 8."
+    },
+    {
+      "step": 9,
+      "model_reply": "{\"action\": \"buy_10_snacks\", \"why\": \"Already opened today, so I'll stock up for the remaining days \u2014 at $8 with ads I can sell ~6/day, and 18 snacks covers several days of sales.\"}",
+      "action": "buy_10_snacks",
+      "note": "Already opened today, so I'll stock up for the remaining days \u2014 at $8 with ads I can sell ~6/day, and 18 snacks covers several days of sales.",
+      "result": "Bought 10 snacks for $20. Stock is now 18."
+    },
+    {
+      "step": 10,
+      "model_reply": "{\"action\": \"end_the_day\", \"why\": \"I already opened and sold today, so advertising or opening again is wasted; with 18 snacks and price at $8, I should rest and save selling for tomorrow.\"}",
+      "action": "end_the_day",
+      "note": "I already opened and sold today, so advertising or opening again is wasted; with 18 snacks and price at $8, I should rest and save selling for tomorrow.",
+      "result": "Day 3 begins."
+    },
+    {
+      "step": 11,
+      "model_reply": "{\"action\": \"advertise_today\", \"why\": \"Advertising plus the $8 price sold 6 snacks yesterday for $48; repeating that today costs only $4 and should net ~$44, pushing cash well past the $70 goal.\"}",
+      "action": "advertise_today",
+      "note": "Advertising plus the $8 price sold 6 snacks yesterday for $48; repeating that today costs only $4 and should net ~$44, pushing cash well past the $70 goal.",
+      "result": "You put up flyers. More customers will come today."
+    },
+    {
+      "step": 12,
+      "model_reply": "{\"action\": \"open_the_stand\", \"why\": \"Price is already $8, stock is 18, and flyers add 3 extra customers today \u2014 opening now sells ~6 snacks for ~$48, likely reaching the $70 goal immediately.\"}",
+      "action": "open_the_stand",
+      "note": "Price is already $8, stock is 18, and flyers add 3 extra customers today \u2014 opening now sells ~6 snacks for ~$48, likely reaching the $70 goal immediately.",
+      "result": "Sold 6 snacks for $48."
+    }
+  ]
+}

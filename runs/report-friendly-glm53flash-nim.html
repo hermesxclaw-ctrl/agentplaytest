@@ -1,0 +1,31 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+body { font-family: system-ui, sans-serif; margin: 1rem; color: #1a1a2e; line-height: 1.45; }
+table { border-collapse: collapse; font-size: .85rem; }
+td, th { border: 1px solid #ccc; padding: 2px 6px; text-align: left; }
+code { background: #eef; padding: 0 .2em; border-radius: 3px; }
+</style></head><body><h1>AgentPlaytest report — Snack Stand (model-friendly interface)</h1>
+<p><strong>Playtester:</strong> Model: z-ai/glm-5.3-flash via llamacpp  </p>
+<p><strong>Score:</strong> 100.0/100 (grade A)  </p>
+<p><strong>Verdict:</strong> Model-playable: the agent reached the goal unaided.  </p>
+<p><strong>Steps:</strong> 12 of 20 max  </p>
+<p><strong>Milestones:</strong> 4/4 — first_sale, profit_10, profit_25, goal_reached</p>
+<h2>Where it got stuck (plain English)</h2>
+<p>&bull; Most-used actions: <code>open_the_stand</code> x3, <code>buy_10_snacks</code> x2.</p>
+<p>&bull; Longest no-progress stretch: 4 steps, starting at step 3. During a stall the agent is spending tokens without moving any milestone — in a paid agent product this is literally burning money.</p>
+<p>&bull; The agent reached the goal in 12 steps with 0 invalid replies.</p>
+<h2>Transcript</h2>
+<table>
+<tr><td>Step</td><td>Action</td><td>Result</td></tr>
+<tr><td>1</td><td><code>buy_10_snacks</code></td><td>Bought 10 snacks for $20. Stock is now 10.</td></tr>
+<tr><td>2</td><td><code>open_the_stand</code></td><td>Sold 6 snacks for $30.</td></tr>
+<tr><td>3</td><td><code>end_the_day</code></td><td>Day 2 begins.</td></tr>
+<tr><td>4</td><td><code>buy_5_snacks</code></td><td>Bought 5 snacks for $10. Stock is now 9.</td></tr>
+<tr><td>5</td><td><code>advertise_today</code></td><td>You put up flyers. More customers will come today.</td></tr>
+<tr><td>6</td><td><code>set_price_high_8_dollars</code></td><td>Price set to $8 per snack.</td></tr>
+<tr><td>7</td><td><code>open_the_stand</code></td><td>Sold 6 snacks for $48.</td></tr>
+<tr><td>8</td><td><code>buy_5_snacks</code></td><td>Bought 5 snacks for $10. Stock is now 8.</td></tr>
+<tr><td>9</td><td><code>buy_10_snacks</code></td><td>Bought 10 snacks for $20. Stock is now 18.</td></tr>
+<tr><td>10</td><td><code>end_the_day</code></td><td>Day 3 begins.</td></tr>
+<tr><td>11</td><td><code>advertise_today</code></td><td>You put up flyers. More customers will come today.</td></tr>
+<tr><td>12</td><td><code>open_the_stand</code></td><td>Sold 6 snacks for $48.</td></tr>
+</table></body></html>

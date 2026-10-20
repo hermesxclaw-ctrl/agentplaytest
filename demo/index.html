@@ -21,7 +21,7 @@
 <body>
 <h1>AgentPlaytest — demo</h1>
 <p class="sub">One tiny game (Snack Stand). One checker. Local open-weight Gemma models, run 100% locally —
-plus one hosted frontier-model validation below. Two interfaces, two model sizes — the full 2×2 grid,
+plus hosted frontier-model validations below. Two interfaces, two model sizes — the full 2×2 grid,
 all four cells captured. Same model, same harness;
 the only thing that changes between the left and right columns is how much the interface explains itself.</p>
 
@@ -77,6 +77,24 @@ for 7 straight steps. Capability compensates for a hostile interface partially, 
     <p>Same model, same 20-step budget. One sale decoded out of coded feedback
     (1 of 4 milestones, 14% progress) — then a 7-step no-progress stall.</p>
     <iframe src="../runs/report-hostile-gptoss120b-paced.html" title="Hostile GPT-OSS run report"></iframe>
+  </div>
+</div>
+
+<h2>Second hosted validation — GLM-5.3-Flash (NVIDIA NIM free tier, same checker)</h2>
+<p>Pointed at Z.AI's GLM-5.3-Flash through NVIDIA NIM's free tier. The friendly run is the
+second perfect score the checker has recorded:
+<strong>friendly 100.0 (A) — goal reached in 12 steps</strong>, all 4 milestones, zero invalid
+replies. The hostile run never got to finish: the model probed the opaque actions in order and
+decoded one sale (1 of 4 milestones, 14% progress), then the NIM endpoint returned null message
+content at step 9 of 20 and the run died — <strong>incomplete, provisional 20.6 at the cutoff,
+preserved in <code>runs/</code> as evidence, not a score</strong> (the full-size GLM-5.3 pair
+died the same way on the same lane, at steps 1 and 3).</p>
+<div class="grid">
+  <div class="card">
+    <h2>✅ Model-friendly interface — GLM-5.3-Flash</h2>
+    <p class="score good">100.0 / 100 (grade A)</p>
+    <p>Goal reached in 12 steps: bought, advertised, priced high, sold — all 4 milestones.</p>
+    <iframe src="../runs/report-friendly-glm53flash-nim.html" title="Friendly GLM-5.3-Flash run report"></iframe>
   </div>
 </div>
 

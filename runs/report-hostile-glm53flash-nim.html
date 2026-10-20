@@ -1,0 +1,30 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+body { font-family: system-ui, sans-serif; margin: 1rem; color: #1a1a2e; line-height: 1.45; }
+table { border-collapse: collapse; font-size: .85rem; }
+td, th { border: 1px solid #ccc; padding: 2px 6px; text-align: left; }
+code { background: #eef; padding: 0 .2em; border-radius: 3px; }
+</style></head><body><h1>AgentPlaytest report — Snack Stand (model-hostile interface)</h1>
+<p><strong>Playtester:</strong> Model: z-ai/glm-5.3-flash via llamacpp  </p>
+<p><strong>Score:</strong> 20.6/100 (grade F)  </p>
+<p><strong>Verdict:</strong> Not model-playable: the agent could not make meaningful progress unaided.  </p>
+<p><strong>Steps:</strong> 9 of 20 max  </p>
+<p><strong>Milestones:</strong> 1/4 — first_sale</p>
+<p><strong>Status:</strong> INCOMPLETE — backend error at step 9: backend returned null message content. Score is provisional.</p>
+<h2>Where it got stuck (plain English)</h2>
+<p>&bull; Most-used actions: <code>op_a</code> x2, <code>op_b</code> x1.</p>
+<p>&bull; The run stopped early on a backend failure (1 failed request(s): backend error at step 9: backend returned null message content). That is an infrastructure failure, not a model decision — the model never got to reply — so this score is provisional and the run should be repeated before it is compared with completed runs.</p>
+<p>&bull; Longest no-progress stretch: 6 steps, starting at step 1. During a stall the agent is spending tokens without moving any milestone — in a paid agent product this is literally burning money.</p>
+<p>&bull; It got 14% of the way to the goal (in cash terms) before the run ended.</p>
+<h2>Transcript</h2>
+<table>
+<tr><td>Step</td><td>Action</td><td>Result</td></tr>
+<tr><td>1</td><td><code>op_a</code></td><td>D1</td></tr>
+<tr><td>2</td><td><code>op_b</code></td><td>P9</td></tr>
+<tr><td>3</td><td><code>op_c</code></td><td>B1</td></tr>
+<tr><td>4</td><td><code>op_d</code></td><td>E04</td></tr>
+<tr><td>5</td><td><code>op_e</code></td><td>P9</td></tr>
+<tr><td>6</td><td><code>op_f</code></td><td>E04</td></tr>
+<tr><td>7</td><td><code>op_g</code></td><td>S1</td></tr>
+<tr><td>8</td><td><code>op_a</code></td><td>D1</td></tr>
+<tr><td>9</td><td>—</td><td>ERROR: backend error after retry: backend returned null message content</td></tr>
+</table></body></html>

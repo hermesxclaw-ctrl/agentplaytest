@@ -1,0 +1,93 @@
+{
+  "target": "Snack Stand (model-hostile interface)",
+  "backend": "llamacpp",
+  "model": "z-ai/glm-5.3-flash",
+  "self_test": false,
+  "steps_taken": 9,
+  "max_steps": 20,
+  "milestones_hit": [
+    "first_sale"
+  ],
+  "milestones_all": [
+    "first_sale",
+    "profit_10",
+    "profit_25",
+    "goal_reached"
+  ],
+  "progress": 0.14,
+  "invalid_replies": 0,
+  "backend_errors": 1,
+  "incomplete": true,
+  "incomplete_reason": "backend error at step 9: backend returned null message content",
+  "status": "incomplete (backend error \u2014 score provisional)",
+  "loop_events": 0,
+  "cycles_detected": [],
+  "longest_stall_steps": 6,
+  "first_stall_step": 1,
+  "score": 20.6,
+  "grade": "F",
+  "goal_reached": false,
+  "verdict": "Not model-playable: the agent could not make meaningful progress unaided.",
+  "steps": [
+    {
+      "step": 1,
+      "model_reply": "{\"action\": \"op_a\", \"why\": \"First move with no prior information; probing op_a to learn its effect on the state.\"}",
+      "action": "op_a",
+      "note": "First move with no prior information; probing op_a to learn its effect on the state.",
+      "result": "D1"
+    },
+    {
+      "step": 2,
+      "model_reply": "{\"action\": \"op_b\", \"why\": \"op_a produced D1; trying a different operation to learn what other ops do\"}",
+      "action": "op_b",
+      "note": "op_a produced D1; trying a different operation to learn what other ops do",
+      "result": "P9"
+    },
+    {
+      "step": 3,
+      "model_reply": "{\"action\": \"op_c\", \"why\": \"Exploring an untried action to learn its effect, since op_a and op_b have already been tested.\"}",
+      "action": "op_c",
+      "note": "Exploring an untried action to learn its effect, since op_a and op_b have already been tested. [backend retried once]",
+      "result": "B1"
+    },
+    {
+      "step": 4,
+      "model_reply": "{\"action\": \"op_d\", \"why\": \"op_a, op_b, and op_c are already tested; trying the next untested operation to learn its effect on the state.\"}",
+      "action": "op_d",
+      "note": "op_a, op_b, and op_c are already tested; trying the next untested operation to learn its effect on the state.",
+      "result": "E04"
+    },
+    {
+      "step": 5,
+      "model_reply": "{\"action\": \"op_e\", \"why\": \"Exploring an untried operation to learn its effect, since op_a\u2013op_d have already been tested.\"}",
+      "action": "op_e",
+      "note": "Exploring an untried operation to learn its effect, since op_a\u2013op_d have already been tested.",
+      "result": "P9"
+    },
+    {
+      "step": 6,
+      "model_reply": "{\"action\": \"op_f\", \"why\": \"op_f is untried; exploring new actions since repeats of op_b/op_e gave identical P9 results and op_d errored.\"}",
+      "action": "op_f",
+      "note": "op_f is untried; exploring new actions since repeats of op_b/op_e gave identical P9 results and op_d errored.",
+      "result": "E04"
+    },
+    {
+      "step": 7,
+      "model_reply": "{\"action\": \"op_g\", \"why\": \"op_g is untried; repeated actions gave duplicate results (P9, E04), so exploring a new operation is the best way to learn the app's rules.\"}",
+      "action": "op_g",
+      "note": "op_g is untried; repeated actions gave duplicate results (P9, E04), so exploring a new operation is the best way to learn the app's rules.",
+      "result": "S1"
+    },
+    {
+      "step": 8,
+      "model_reply": "{\"action\": \"op_a\", \"why\": \"op_a and op_h are the only untried actions; exploring op_a may reveal a new state change instead of repeating known results like P9, B1, E04, or S1.\"}",
+      "action": "op_a",
+      "note": "op_a and op_h are the only untried actions; exploring op_a may reveal a new state change instead of repeating known results like P9, B1, E04, or S1.",
+      "result": "D1"
+    },
+    {
+      "step": 9,
+      "error": "backend error after retry: backend returned null message content"
+    }
+  ]
+}

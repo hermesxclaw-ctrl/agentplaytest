@@ -53,6 +53,7 @@ across runs of the *same* target, not yet across different apps.
 | Gemma 3 4B (Q3) | **35.0 (D)** — real play: bought, sold, 2/4 milestones, then fixated on re-setting its price and never ended a day | **0.0 (F)** — cycled `op_c`/`op_d` into the same `E04` error for 20 steps, zero milestones, never moved the progress metric at all |
 | Gemma 3 1B (Q4) | **0.0 (F)** — repeated its first action for 60 straight steps | **0.0 (F)** — picked `op_a` (end day) 7 times and skipped the entire week without learning anything |
 | GPT-OSS 120B (hosted) | **100.0 (A)** — goal reached in 9 steps, all 4 milestones | **20.6 (F)** — probed all eight opaque actions systematically, decoded enough for one sale (1/4 milestones), then stalled for 7 straight steps |
+| GLM-5.3-Flash (hosted) | **100.0 (A)** — goal reached in 12 steps, all 4 milestones, zero invalid replies | **Incomplete** — probed the opaque actions in order and decoded one sale (1/4 milestones), then the backend died at step 9 of 20; provisional 20.6 at the cutoff, preserved in `runs/` as evidence, not a score |
 
 **Frontier validation (2026-10-18):** the GPT-OSS row is the same checker
 pointed at a hosted frontier-class model (OpenAI's GPT-OSS 120B, via Groq's
@@ -67,6 +68,18 @@ attempts the same evening (a 550B open model whose free lane dropped the
 connection at step 1, twice; a flagship model that answered probes and then
 demanded payment) are preserved in `runs/` as what they are —
 **incomplete runs, not scores**.
+
+**Second hosted validation (2026-10-19):** GLM-5.3-Flash (Z.AI's
+`z-ai/glm-5.3-flash`, via NVIDIA NIM's free tier) ran the same checker the
+following day. Its friendly run is the second perfect score recorded here —
+goal reached in 12 steps, all 4 milestones, zero invalid replies, zero
+backend errors. Its hostile run is **incomplete, not a score**: the model
+probed the opaque actions in order, decoded enough for one sale
+(1/4 milestones, 14% progress), and then the NIM endpoint returned null
+message content at step 9 of 20 and the run died (provisional 20.6 at the
+cutoff). It is preserved in `runs/` alongside the full-size GLM-5.3 pair,
+which died the same way on the same lane even earlier (steps 1 and 3) —
+on NIM's free tier that week, the lane was the bottleneck, not the model.
 
 The 4B friendly run ended at step 14 when a client timeout hit a slow
 generation on the shared 2-core build box — the transcript in `runs/`
